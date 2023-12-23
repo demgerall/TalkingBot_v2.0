@@ -13,9 +13,11 @@ import requests
 import pvporcupine
 from pvrecorder import PvRecorder
 
+
 # инициализация модели Vosk
 model = Model("models/small_model_ru")
 rec = KaldiRecognizer(model, 16000)
+
 
 class VoiceAssistant:
     """
@@ -328,21 +330,21 @@ if __name__ == "__main__":
 
             print(voice_input)
 
-            voice_input = voice_input.split(" ")
+            voice_input_splitted = voice_input.split(" ")
 
             k = 0
 
             while k < 3:
-                print(voice_input)
+                print(voice_input_splitted)
 
                 if k == 0:
-                    command = voice_input[0]
-                if (k == 1) and (k < len(voice_input)):
-                    command = voice_input[0] + " " + voice_input[1]
-                if (k == 2) and (k < len(voice_input)):
-                    command = voice_input[0] + " " + voice_input[1] + " " + voice_input[2]
+                    command = voice_input_splitted[0]
+                if (k == 1) and (k < len(voice_input_splitted)):
+                    command = voice_input_splitted[0] + " " + voice_input_splitted[1]
+                if (k == 2) and (k < len(voice_input_splitted)):
+                    command = voice_input_splitted[0] + " " + voice_input_splitted[1] + " " + voice_input_splitted[2]
 
-                command_options = [str(input_part) for input_part in voice_input[(k+1):len(voice_input)]]
+                command_options = [str(input_part) for input_part in voice_input_splitted[(k+1):len(voice_input_splitted)]]
 
                 print(k)
                 print(command)
@@ -356,8 +358,43 @@ if __name__ == "__main__":
             activation = False
 
             if k < 5:
-                play_voice_assistant_speech("Я не поняла, что вы сказали. Повторите пожалуйста.")
-                activation = True
+
+                prompt = {
+                    "modelUri": "gpt://b1giqp5u18ts53m4t8dt/yandexgpt-lite",
+                    "completionOptions": {
+                        "stream": False,
+                        "temperature": 0.6,
+                        "maxTokens": "2000"
+                    },
+                    "messages": [
+                        {
+                            "role": "system",
+                            "text": "Ты преподаватель в университете."
+                        },
+                        {
+                            "role": "user",
+                            "text": "Здравствуйте! Мне нужна ваша помощь."
+                        },
+                        {
+                            "role": "assistant",
+                            "text": "Здравствуйте! Задавайте свой вопрос."
+                        },
+                        {
+                            "role": "user",
+                            "text": voice_input
+                        }
+                    ]
+                }
+
+                url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
+                headers = {
+                    "Content-Type": "application/json",
+                    "Authorization": "Api-Key AQVN1PQls17JJj1VhazwvzUnjyBbcUD_XuLOuSiQ"
+                }
+
+                response = requests.post(url, headers=headers, json=prompt)
+                result = response.text
+                play_voice_assistant_speech(result.removeprefix('{"result":{"alternatives":[{"message":{"role":"assistant","text":"')[:-150].replace('/', ""))
 
 
 
