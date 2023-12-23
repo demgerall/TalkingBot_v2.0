@@ -10,7 +10,8 @@ import datetime
 from num2words import num2words
 from bs4 import BeautifulSoup
 import requests
-
+import pvporcupine
+from pvrecorder import PvRecorder
 
 class VoiceAssistant:
     """
@@ -296,6 +297,26 @@ def search_weather(*args: tuple):
     print(temp.text)
     play_voice_assistant_speech("Сейчас" + temp.text)
 
+def Isactivation():
+
+    porcupine = pvporcupine.create(
+        access_key="rGmjFzlpPYfcYnKSjE6cUZhQaW38gssHbfAMBUhYcS5NFAHBzT3GXA==",
+        keywords=["grapefruit"])
+    recoder = PvRecorder(device_index=-1, frame_length=porcupine.frame_length)
+
+    try:
+        recoder.start()
+
+        while True:
+            keyword_index = porcupine.process(recoder.read())
+            if keyword_index >= 0:
+                return True
+
+    except KeyboardInterrupt:
+        recoder.stop()
+    finally:
+        porcupine.delete()
+        recoder.delete()
 
 commands = {
     ('список команд', 'команды', 'что ты умеешь', 'твои навыки', 'навыки'): help,
@@ -331,22 +352,22 @@ if __name__ == "__main__":
     setup_assistant_voice()
 
     while True:
-        # старт записи речи с последующим выводом распознанной речи
-        # и удалением записанного в микрофон аудио
-        voice_input = record_and_recognize_audio()
-        os.remove("microphone-results.wav")
-        print(voice_input)
+
+        activation = Isactivation()
 
         # отделение команд от дополнительной информации (аргументов)
-        if "алиса" in voice_input:
-            voice_input = voice_input.replace('алиса ', '')
+        if activation:
+
+            voice_input = record_and_recognize_audio()
+            os.remove("microphone-results.wav")
+
             print(voice_input)
 
             voice_input = voice_input.split(" ")
 
-            k = 0
+            k=0
 
-            while k < 3:
+            while k<3:
                 print(voice_input)
 
                 if k == 0:
@@ -369,4 +390,6 @@ if __name__ == "__main__":
 
             if k < 5:
                 play_voice_assistant_speech("Я не поняла, что вы сказали. Повторите пожалуйста.")
+
+            activation = False
 
