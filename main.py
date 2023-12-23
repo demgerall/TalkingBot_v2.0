@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 import requests #работа с YandexGPT
 import pvporcupine #стартовое слово
 from pvrecorder import PvRecorder #запись голоса для стартового слова
+from fuzzywuzzy import fuzz #поиск расстояния Левенштейна
 
 
 # инициализация модели Vosk
@@ -61,8 +62,9 @@ def record_and_recognize_audio(*args: tuple):
     """
     Запись и распознавание аудио
     """
-    print("Слушаю...")
     try:
+        print("Слушаю...")
+
         p = pyaudio.PyAudio()
         stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
         stream.start_stream()
@@ -79,81 +81,81 @@ def record_and_recognize_audio(*args: tuple):
 
                 if (rec.AcceptWaveform(data)) and (len(data) > 0):
                     recognized_data = json.loads(rec.Result())
-                    print(recognized_data['text'])
                     if recognized_data['text']:
                         return recognized_data['text']
         except:
             print("Извините, произошла какая-то ошибка")
-
     except:
         pass
 
 
-def execute_command_with_name(command_name: str, *args: list):
+def execute_command_with_name(command_name: str):
     """
-    Выполнение заданной пользователем команды с дополнительными аргументами
-    :param command_name: название команды
-    :param args: аргументы, которые будут переданы в функцию
-    :return:
+    Выполнение заданной пользователем команды
     """
     for key in commands.keys():
-        if command_name in key:
-            commands[key](*args)
-            return True
+        if (type(key) == tuple):
+            for variant in key:
+                commandRate = fuzz.WRatio(str(command_name), variant)
+                if commandRate >= 80:
+                    commands[key]()
+                    return True
+                else:
+                    pass
         else:
-            pass
+            commandRate = fuzz.WRatio(str(command_name), key)
+            if commandRate >= 80:
+                commands[key]()
+                return True
+            else:
+                pass
 
-
-def search_for_video_on_youtube(*args: tuple):
+def search_for_video_on_youtube():
     """
     Поиск видео на YouTube с автоматическим открытием ссылки на список результатов
-    :param args: фраза поискового запроса
     """
-    if not args[0]: return
-    search_term = " ".join(args[0])
+    play_voice_assistant_speech("Что открыть в YouTube?")
+    search_term = record_and_recognize_audio()
+
     url = "https://www.youtube.com/results?search_query=" + search_term
     webbrowser.get().open(url)
 
-    # для мультиязычных голосовых ассистентов лучше создать
-    # отдельный класс, который будет брать перевод из JSON-файла
     play_voice_assistant_speech("Вот какие видео я нашла по запросу " + search_term + "на ютубе")
 
 
-def search_in_internet(*args: tuple):
+def search_in_internet():
     """
     Поиск в интернете с автоматическим открытием ссылки на список результатов
-    :param args: фраза поискового запроса
     """
-    if not args[0]: return
-    search_term = " ".join(args[0])
+    play_voice_assistant_speech("Что открыть в браузере?")
+    search_term = record_and_recognize_audio()
+
     url = "https://yandex.ru/search/?clid=2358536&text=" + search_term
     webbrowser.get().open(url)
 
-    # для мультиязычных голосовых ассистентов лучше создать
-    # отдельный класс, который будет брать перевод из JSON-файла
     play_voice_assistant_speech("Вот что я нашла по запросу " + search_term + "в интернете")
 
 
-def play_greetings(*args: tuple):
+def play_greetings():
     """
     Приветствие
     """
     hour = int(datetime.datetime.now().hour)
 
-    if hour >= 8 and hour < 12:
+    if hour >= 6 and hour < 12:
         play_voice_assistant_speech("Доброе утро!")
 
     elif hour >= 12 and hour < 18:
         play_voice_assistant_speech("Добрый день!")
 
-    elif hour > 18 and hour < 23:
+    elif hour > 18 and hour < 24:
         play_voice_assistant_speech("Добрый вечер!")
 
     else:
         play_voice_assistant_speech("Доброй ночи!")
 
 
-def play_farewell_and_quit(*args: tuple):
+def play_farewell_and_quit():
     """
     Прощание
     """
@@ -161,13 +163,13 @@ def play_farewell_and_quit(*args: tuple):
     exit()
 
 
-def ctime(*args: tuple):
+def ctime():
     now = datetime.datetime.now()
     text = "Сейчас " + num2words(now.hour, lang='ru') + " " + num2words(now.minute, lang='ru')
     play_voice_assistant_speech(text)
 
 
-def help(*args: tuple):
+def help():
     text = "Я умею: ..."
     text += "произносить текущее время ..."
     text += "искать что-то в интернете  ..."
@@ -178,9 +180,8 @@ def help(*args: tuple):
     play_voice_assistant_speech(text)
 
 
-def openExe(*args: tuple):
-    y = 0
-    while y == 0:
+def openExe():
+    while True:
         play_voice_assistant_speech("Какое приложение открыть?")
         voice_input = record_and_recognize_audio()
 
@@ -188,25 +189,26 @@ def openExe(*args: tuple):
             play_voice_assistant_speech("Открываю!")
             codePath = "C:\\Program Files\\Adobe\\Adobe Photoshop 2022\\Photoshop.exe"
             os.startfile(codePath)
-            y += 1
+            return True
         if "игру" in voice_input:
             play_voice_assistant_speech("Открываю!")
             codePath = "C:\\Games\\Keep Talking and Nobody Explodes v1.9.24\\ktane.exe"
             os.startfile(codePath)
-            y += 1
+            return True
         if "браузер" in voice_input:
             play_voice_assistant_speech("Открываю!")
             codePath = "C:\\Users\\demge\\AppData\\Local\\Programs\\Opera GX\\launcher.exe"
             os.startfile(codePath)
-            y += 1
+            return True
+
+        play_voice_assistant_speech("Я вас не поняла, повторите ещё раз")
+
+def theBest():
+    prepodavatel = "Погребной Александр Владимирович"
+    play_voice_assistant_speech(prepodavatel)
 
 
-def theBest(*args: tuple):
-    text = "Погребной Александр Владимирович"
-    play_voice_assistant_speech(text)
-
-
-def play_rasp(*args: tuple):
+def play_rasp():
     """
     Разговор
     """
@@ -248,12 +250,11 @@ def play_rasp(*args: tuple):
         play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю")
 
 
-def search_weather(*args: tuple):
+def search_weather():
     url = 'https://www.meteoservice.ru/weather/overview/tomsk'
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
     temp = soup.find('span', 'value')
-    print(temp.text)
     play_voice_assistant_speech("Сейчас" + temp.text)
 
 
@@ -282,13 +283,13 @@ def Isactivation():
 commands = {
     ('список команд', 'команды', 'что ты умеешь', 'твои навыки', 'навыки'): help,
     ("здравствуй", "привет", "приветствую"): play_greetings,
-    ("найди"): search_in_internet,
+    ("открой в браузере"): search_in_internet,
     ("выход", "стоп", "досвидания", "пока"): play_farewell_and_quit,
     ("включи видео"): search_for_video_on_youtube,
     ('время', 'текущее время', 'сейчас времени', 'который час'): ctime,
     ("открой приложение"): openExe,
     ("кто наш руководитель"): theBest,
-    ("покажи расписание", "расписание"): play_rasp,
+    ("расписание"): play_rasp,
     ("какая погода сейчас", "погода", "температура", "какая сейчас погода"): search_weather,
 }
 
@@ -308,48 +309,20 @@ if __name__ == "__main__":
 
     play_voice_assistant_speech("Здравствуйте, меня зовут Компьютер")
 
-    activation = False
-
     while True:
 
-        if not activation:
-            activation = Isactivation()
+        activation = False
+        activation = Isactivation()
 
-        # отделение команд от дополнительной информации (аргументов)
         if activation:
+
+            play_voice_assistant_speech("Да, сэр")
 
             voice_input = record_and_recognize_audio(model, rec)
 
-            print(voice_input)
+            #print(voice_input)
 
-            voice_input_splitted = voice_input.split(" ")
-
-            k = 0
-
-            while k < 3:
-                print(voice_input_splitted)
-
-                if k == 0:
-                    command = voice_input_splitted[0]
-                if (k == 1) and (k < len(voice_input_splitted)):
-                    command = voice_input_splitted[0] + " " + voice_input_splitted[1]
-                if (k == 2) and (k < len(voice_input_splitted)):
-                    command = voice_input_splitted[0] + " " + voice_input_splitted[1] + " " + voice_input_splitted[2]
-
-                command_options = [str(input_part) for input_part in voice_input_splitted[(k+1):len(voice_input_splitted)]]
-
-                print(k)
-                print(command)
-                print(command_options)
-
-                if execute_command_with_name(command, command_options):
-                    k += 10
-                else:
-                    k += 1
-
-            activation = False
-
-            if k < 5:
+            if not execute_command_with_name(voice_input):
 
                 prompt = {
                     "modelUri": "gpt://b1giqp5u18ts53m4t8dt/yandexgpt-lite",
@@ -387,6 +360,3 @@ if __name__ == "__main__":
                 response = requests.post(url, headers=headers, json=prompt)
                 result = response.text
                 play_voice_assistant_speech(result.removeprefix('{"result":{"alternatives":[{"message":{"role":"assistant","text":"')[:-150].replace('/', ""))
-
-
-

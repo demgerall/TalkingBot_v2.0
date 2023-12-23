@@ -1,16 +1,20 @@
-import webbrowser
+import webbrowser #работа с браузером
 from vosk import Model, KaldiRecognizer  # оффлайн-распознавание от Vosk
-import speech_recognition  # распознавание пользовательской речи (Speech-To-Text)
 import pyttsx3  # синтез речи (Text-To-Speech)
-import wave  # создание и чтение аудиофайлов формата wav
 import json  # работа с json-файлами и json-строками
+import pyaudio #запись голоса
 import os  # работа с файловой системой
-import datetime
-from num2words import num2words
+import datetime #работа с датами
+from num2words import num2words #улучшенное распознавание чисел
 from bs4 import BeautifulSoup
-import requests
-import pvporcupine
-from pvrecorder import PvRecorder
+import requests #работа с YandexGPT
+import pvporcupine #стартовое слово
+from pvrecorder import PvRecorder #запись голоса для стартового слова
+
+
+# инициализация модели Vosk
+model = Model("models/small_model_ru")
+rec = KaldiRecognizer(model, 16000)
 
 
 class VoiceAssistant:
@@ -57,75 +61,32 @@ def record_and_recognize_audio(*args: tuple):
     """
     Запись и распознавание аудио
     """
-    with microphone:
-        recognized_data = ""
-
-        # регулирование уровня окружающего шума
-        recognizer.adjust_for_ambient_noise(microphone, duration=1)
-
-        try:
-            print("Слушаю...")
-            #play_voice_assistant_speech("Слушаю...")
-            audio = recognizer.listen(microphone, 5, 5)
-
-            with open("microphone-results.wav", "wb") as file:
-                file.write(audio.get_wav_data())
-
-        except speech_recognition.WaitTimeoutError:
-            print("Can you check if your microphone is on, please?")
-            return
-
-        # использование online-распознавания через Google
-        # (высокое качество распознавания)
-        try:
-            print("Распознаю вашу речь...")
-            #play_voice_assistant_speech("Распознаю вашу речь...")
-            recognized_data = recognizer.recognize_google(audio, language="ru").lower()
-
-        except speech_recognition.UnknownValueError:
-            pass
-
-        # в случае проблем с доступом в Интернет происходит
-        # попытка использовать offline-распознавание через Vosk
-        except speech_recognition.RequestError:
-            print("Trying to use offline recognition...")
-            recognized_data = use_offline_recognition()
-
-        return recognized_data
-
-
-def use_offline_recognition():
-    """
-    Переключение на оффлайн-распознавание речи
-    :return: распознанная фраза
-    """
-    recognized_data = ""
+    print("Слушаю...")
     try:
-        # проверка наличия модели на нужном языке в каталоге приложения
-        if not os.path.exists("models/vosk-model-small-ru-0.22"):
-            print("Please download the model from:\n"
-                  "https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
-            exit(1)
+        p = pyaudio.PyAudio()
+        stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
+        stream.start_stream()
 
-        # анализ записанного в микрофон аудио (чтобы избежать повторов фразы)
-        wave_audio_file = wave.open("microphone-results.wav", "rb")
-        model = Model("models/vosk-model-small-ru-0.22")
-        offline_recognizer = KaldiRecognizer(model, wave_audio_file.getframerate())
+        try:
+            # проверка наличия модели на нужном языке в каталоге приложения
+            if not os.path.exists("models/small_model_ru"):
+                print("Please download the model from:\n"
+                      "https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
+                exit(1)
+            while True:
+                # анализ записанного в микрофон аудио (чтобы избежать повторов фразы)
+                data = stream.read(4000, exception_on_overflow=False)
 
-        data = wave_audio_file.readframes(wave_audio_file.getnframes())
-        if len(data) > 0:
-            if offline_recognizer.AcceptWaveform(data):
-                recognized_data = offline_recognizer.Result()
+                if (rec.AcceptWaveform(data)) and (len(data) > 0):
+                    recognized_data = json.loads(rec.Result())
+                    print(recognized_data['text'])
+                    if recognized_data['text']:
+                        return recognized_data['text']
+        except:
+            print("Извините, произошла какая-то ошибка")
 
-                # получение данных распознанного текста из JSON-строки
-                # (чтобы можно было выдать по ней ответ)
-                recognized_data = json.loads(recognized_data)
-                recognized_data = recognized_data["text"]
     except:
-        print("Sorry, speech service is unavailable. Try again later")
-
-    return recognized_data
-
+        pass
 
 
 def execute_command_with_name(command_name: str, *args: list):
@@ -142,6 +103,7 @@ def execute_command_with_name(command_name: str, *args: list):
         else:
             pass
 
+
 def search_for_video_on_youtube(*args: tuple):
     """
     Поиск видео на YouTube с автоматическим открытием ссылки на список результатов
@@ -155,6 +117,7 @@ def search_for_video_on_youtube(*args: tuple):
     # для мультиязычных голосовых ассистентов лучше создать
     # отдельный класс, который будет брать перевод из JSON-файла
     play_voice_assistant_speech("Вот какие видео я нашла по запросу " + search_term + "на ютубе")
+
 
 def search_in_internet(*args: tuple):
     """
@@ -170,34 +133,25 @@ def search_in_internet(*args: tuple):
     # отдельный класс, который будет брать перевод из JSON-файла
     play_voice_assistant_speech("Вот что я нашла по запросу " + search_term + "в интернете")
 
+
 def play_greetings(*args: tuple):
     """
     Приветствие
     """
     hour = int(datetime.datetime.now().hour)
 
-    if hour >= 0 and hour < 12:
+    if hour >= 6 and hour < 12:
         play_voice_assistant_speech("Доброе утро!")
 
     elif hour >= 12 and hour < 18:
         play_voice_assistant_speech("Добрый день!")
 
-    else:
+    elif hour > 18 and hour < 24:
         play_voice_assistant_speech("Добрый вечер!")
 
-    #play_voice_assistant_speech("Привет!")
-
-def play_dela(*args: tuple):
-    """
-    Разговор
-    """
-
-    play_voice_assistant_speech("У меня все замечательно! Как у вас дела?")
-    voice_input = record_and_recognize_audio()
-    if "плохо" in voice_input:
-        play_voice_assistant_speech("Что случилось?")
     else:
-        play_voice_assistant_speech("Рада слышать!")
+        play_voice_assistant_speech("Доброй ночи!")
+
 
 def play_farewell_and_quit(*args: tuple):
     """
@@ -206,10 +160,12 @@ def play_farewell_and_quit(*args: tuple):
     play_voice_assistant_speech("Досвидания")
     exit()
 
+
 def ctime(*args: tuple):
     now = datetime.datetime.now()
     text = "Сейчас " + num2words(now.hour, lang='ru') + " " + num2words(now.minute, lang='ru')
     play_voice_assistant_speech(text)
+
 
 def help(*args: tuple):
     text = "Я умею: ..."
@@ -221,8 +177,10 @@ def help(*args: tuple):
     text += "озвучивать текущую погоду ..."
     play_voice_assistant_speech(text)
 
+
 def openExe(*args: tuple):
     y = 0
+
     while y == 0:
         play_voice_assistant_speech("Какое приложение открыть?")
         voice_input = record_and_recognize_audio()
@@ -258,7 +216,8 @@ def play_rasp(*args: tuple):
         try:
             play_voice_assistant_speech("Расписание какой группы вы хотите открыть?")
             voice_input = record_and_recognize_audio()
-            if "8201" in voice_input:
+
+            if "восемь ноль два" in voice_input:
                 gr = '37030'
                 x = 1
             elif "8202" in voice_input:
@@ -276,15 +235,16 @@ def play_rasp(*args: tuple):
     play_voice_assistant_speech("Расписание на какую неделю вы хотите открыть?")
     voice_input = record_and_recognize_audio()
     print(voice_input)
+
     if "текущую" in voice_input:
         week_number = datetime.datetime.today().isocalendar()[1] + 18
         print(week_number)
-        url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2022/' + str(week_number) + '/view.html'
+        url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2023/' + str(week_number) + '/view.html'
         webbrowser.get().open(url)
         play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю")
     else:
         week_number = datetime.datetime.today().isocalendar()[1] + 18
-        url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2022/' + str(week_number) + '/view.html'
+        url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2023/' + str(week_number) + '/view.html'
         webbrowser.get().open(url)
         play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю")
 
@@ -297,11 +257,12 @@ def search_weather(*args: tuple):
     print(temp.text)
     play_voice_assistant_speech("Сейчас" + temp.text)
 
+
 def Isactivation():
 
     porcupine = pvporcupine.create(
         access_key="rGmjFzlpPYfcYnKSjE6cUZhQaW38gssHbfAMBUhYcS5NFAHBzT3GXA==",
-        keywords=["grapefruit"])
+        keywords=["grapefruit", "computer"])
     recoder = PvRecorder(device_index=-1, frame_length=porcupine.frame_length)
 
     try:
@@ -311,17 +272,17 @@ def Isactivation():
             keyword_index = porcupine.process(recoder.read())
             if keyword_index >= 0:
                 return True
-
     except KeyboardInterrupt:
         recoder.stop()
+
     finally:
         porcupine.delete()
         recoder.delete()
 
+
 commands = {
     ('список команд', 'команды', 'что ты умеешь', 'твои навыки', 'навыки'): help,
     ("здравствуй", "привет", "приветствую"): play_greetings,
-    #("как дела"): play_dela,
     ("найди"): search_in_internet,
     ("выход", "стоп", "досвидания", "пока"): play_farewell_and_quit,
     ("включи видео"): search_for_video_on_youtube,
@@ -332,12 +293,8 @@ commands = {
     ("какая погода сейчас", "погода", "температура", "какая сейчас погода"): search_weather,
 }
 
+
 if __name__ == "__main__":
-
-    # инициализация инструментов распознавания и ввода речи
-    recognizer = speech_recognition.Recognizer()
-    microphone = speech_recognition.Microphone()
-
     # инициализация инструмента синтеза речи
     ttsEngine = pyttsx3.init()
 
@@ -350,33 +307,37 @@ if __name__ == "__main__":
     # установка голоса по умолчанию
     setup_assistant_voice()
 
+    play_voice_assistant_speech("Здравствуйте, меня зовут Компьютер")
+
+    activation = False
+
     while True:
 
-        activation = Isactivation()
+        if not activation:
+            activation = Isactivation()
 
         # отделение команд от дополнительной информации (аргументов)
         if activation:
 
-            voice_input = record_and_recognize_audio()
-            os.remove("microphone-results.wav")
+            voice_input = record_and_recognize_audio(model, rec)
 
             print(voice_input)
 
-            voice_input = voice_input.split(" ")
+            voice_input_splitted = voice_input.split(" ")
 
-            k=0
+            k = 0
 
-            while k<3:
-                print(voice_input)
+            while k < 3:
+                print(voice_input_splitted)
 
                 if k == 0:
-                    command = voice_input[0]
-                if (k == 1) and (k < len(voice_input)):
-                    command = voice_input[0] + " " + voice_input[1]
-                if (k == 2) and (k < len(voice_input)):
-                    command = voice_input[0] + " " + voice_input[1] + " " + voice_input[2]
+                    command = voice_input_splitted[0]
+                if (k == 1) and (k < len(voice_input_splitted)):
+                    command = voice_input_splitted[0] + " " + voice_input_splitted[1]
+                if (k == 2) and (k < len(voice_input_splitted)):
+                    command = voice_input_splitted[0] + " " + voice_input_splitted[1] + " " + voice_input_splitted[2]
 
-                command_options = [str(input_part) for input_part in voice_input[(k+1):len(voice_input)]]
+                command_options = [str(input_part) for input_part in voice_input_splitted[(k+1):len(voice_input_splitted)]]
 
                 print(k)
                 print(command)
@@ -387,8 +348,46 @@ if __name__ == "__main__":
                 else:
                     k += 1
 
-            if k < 5:
-                play_voice_assistant_speech("Я не поняла, что вы сказали. Повторите пожалуйста.")
-
             activation = False
+
+            if k < 5:
+
+                prompt = {
+                    "modelUri": "gpt://b1giqp5u18ts53m4t8dt/yandexgpt-lite",
+                    "completionOptions": {
+                        "stream": False,
+                        "temperature": 0.6,
+                        "maxTokens": "2000"
+                    },
+                    "messages": [
+                        {
+                            "role": "system",
+                            "text": "Ты преподаватель в университете."
+                        },
+                        {
+                            "role": "user",
+                            "text": "Здравствуйте! Мне нужна ваша помощь."
+                        },
+                        {
+                            "role": "assistant",
+                            "text": "Здравствуйте! Задавайте свой вопрос."
+                        },
+                        {
+                            "role": "user",
+                            "text": voice_input
+                        }
+                    ]
+                }
+
+                url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
+                headers = {
+                    "Content-Type": "application/json",
+                    "Authorization": "Api-Key AQVN1PQls17JJj1VhazwvzUnjyBbcUD_XuLOuSiQ"
+                }
+
+                response = requests.post(url, headers=headers, json=prompt)
+                result = response.text
+                play_voice_assistant_speech(result.removeprefix('{"result":{"alternatives":[{"message":{"role":"assistant","text":"')[:-150].replace('/', ""))
+
+
 
