@@ -1,0 +1,437 @@
+﻿ INFO 2023-06-18 14:00:14,739 [Logging] Logging successfully configured from embedded logConfig asset.
+ INFO 2023-06-18 14:00:14,809 [Logging] Logging start.
+ INFO 2023-06-18 14:00:14,819 [FileUtilityHelper] Attempting to load "C:/Users/demge/AppData/LocalLow/Steel Crate Games/Keep Talking and Nobody Explodes\playerSettings.xml"...
+ INFO 2023-06-18 14:00:14,903 [FileUtilityHelper] Successfully loaded "C:/Users/demge/AppData/LocalLow/Steel Crate Games/Keep Talking and Nobody Explodes\playerSettings.xml".
+DEBUG 2023-06-18 14:00:14,918 [PlayerSettingsManager] PlayerSettings: InvertTiltControls: False, TouchpadInvert: False, RumbleEnabled: True, MusicVolume: 30, SFXVolume: 30, AntiAliasing: 8, VRModeRequested: True, SecondScreenMode: InteractiveManual, VSync: 1, AccessibilitySettings: UnlockAllMissions: false, Vetos: Empty, Empty, Empty, DisabledControlTypes: None LanguageCode: None
+ INFO 2023-06-18 14:00:14,921 [ProgressionManager] Loading progression data...
+ INFO 2023-06-18 14:00:14,922 [FileUtilityHelper] Attempting to load "C:/Users/demge/AppData/LocalLow/Steel Crate Games/Keep Talking and Nobody Explodes\progression.xml"...
+ INFO 2023-06-18 14:00:14,979 [FileUtilityHelper] Successfully loaded "C:/Users/demge/AppData/LocalLow/Steel Crate Games/Keep Talking and Nobody Explodes\progression.xml".
+ INFO 2023-06-18 14:00:14,983 [ProgressionManager] Progression summary:
+ INFO 2023-06-18 14:00:14,984 [ProgressionManager] Last Unlocked Bomb Classification: 2-ru
+ INFO 2023-06-18 14:00:14,987 [ProgressionManager] MissionID: gameoverviewtutorial Beaten: True
+ INFO 2023-06-18 14:00:14,988 [ProgressionManager] MissionID: controlstutorial Beaten: True
+ INFO 2023-06-18 14:00:14,990 [ProgressionManager] MissionID: firsttime Beaten: True
+ INFO 2023-06-18 14:00:14,991 [ProgressionManager] MissionID: somethingoldsomethingnew Beaten: True
+ INFO 2023-06-18 14:00:14,992 [ProgressionManager] MissionID: doubleyourmoney Beaten: True
+ INFO 2023-06-18 14:00:14,993 [ProgressionManager] MissionID: onestepup Beaten: True
+ INFO 2023-06-18 14:00:14,995 [ProgressionManager] MissionID: pickupthepace Beaten: True
+ INFO 2023-06-18 14:00:15,002 [ProgressionManager] MissionID: ahiddenmessage Beaten: True
+ INFO 2023-06-18 14:00:15,004 [ProgressionManager] MissionID: somethingsdifferent Beaten: True
+ INFO 2023-06-18 14:00:15,005 [ProgressionManager] MissionID: giantleap Beaten: True
+ INFO 2023-06-18 14:00:15,006 [ProgressionManager] MissionID: fairgame Beaten: True
+ INFO 2023-06-18 14:00:15,008 [ProgressionManager] MissionID: pickupthepacetwo Beaten: True
+ INFO 2023-06-18 14:00:15,010 [ProgressionManager] MissionID: noroomforerror Beaten: True
+ INFO 2023-06-18 14:00:15,011 [ProgressionManager] MissionID: eightminutes Beaten: True
+ INFO 2023-06-18 14:00:15,013 [ProgressionManager] MissionID: asmallwrinkle Beaten: True
+ INFO 2023-06-18 14:00:15,015 [ProgressionManager] MissionID: payattention Beaten: True
+ INFO 2023-06-18 14:00:15,017 [ProgressionManager] Disarmed component: Wires
+ INFO 2023-06-18 14:00:15,018 [ProgressionManager] Disarmed component: Keypad
+ INFO 2023-06-18 14:00:15,019 [ProgressionManager] Disarmed component: BigButton
+ INFO 2023-06-18 14:00:15,021 [ProgressionManager] Disarmed component: Maze
+ INFO 2023-06-18 14:00:15,022 [ProgressionManager] Disarmed component: Simon
+ INFO 2023-06-18 14:00:15,023 [ProgressionManager] Disarmed component: Memory
+ INFO 2023-06-18 14:00:15,025 [ProgressionManager] Disarmed component: WhosOnFirst
+ INFO 2023-06-18 14:00:15,026 [ProgressionManager] Disarmed component: Morse
+ INFO 2023-06-18 14:00:15,027 [ProgressionManager] Disarmed component: Venn
+ INFO 2023-06-18 14:00:15,028 [ProgressionManager] Disarmed component: WireSequence
+ INFO 2023-06-18 14:00:15,030 [ProgressionManager] Disarmed component: Password
+DEBUG 2023-06-18 14:00:15,031 [LoadingManager] Checking for language preference...
+ INFO 2023-06-18 14:00:15,033 [LoadingManager] No language preference found. Will use system setting.
+ INFO 2023-06-18 14:00:15,667 [PlayerSettingsManager] Saving player settings.
+ INFO 2023-06-18 14:00:15,669 [FileUtilityHelper] Attempting to save "C:/Users/demge/AppData/LocalLow/Steel Crate Games/Keep Talking and Nobody Explodes\playerSettings.xml"...
+ INFO 2023-06-18 14:00:15,689 [FileUtilityHelper] Successfully saved "C:/Users/demge/AppData/LocalLow/Steel Crate Games/Keep Talking and Nobody Explodes\playerSettings.xml".
+DEBUG 2023-06-18 14:00:15,697 [PCPlatformUtil] VRModeRequested: True
+ INFO 2023-06-18 14:00:15,698 [PCPlatformUtil] UnityEngine.VR.VRDevice.isPresent: False
+ INFO 2023-06-18 14:00:15,699 [PCPlatformUtil] No HMD detected. Falling back to non-VR mode.
+ INFO 2023-06-18 14:00:15,700 [PCPlatformUtil] Instantiating FixedCameraRig.
+DEBUG 2023-06-18 14:00:15,733 [AbstractPlatformUtil] RenderScale: 0 Resolution: 0x0
+DEBUG 2023-06-18 14:00:15,808 [KTInputManager] Requested setting control type to: Gaze
+DEBUG 2023-06-18 14:00:15,809 [KTInputManager] Control type not supported. Not changing control type.
+DEBUG 2023-06-18 14:00:15,810 [KTInputManager] creating haptic
+DEBUG 2023-06-18 14:00:15,815 [Localization] OnBeforeLocalizeEvent!
+DEBUG 2023-06-18 14:00:15,984 [Localization] OnLocalizeEvent!
+ INFO 2023-06-18 14:00:16,422 [Rules] Loading all manual meta data...
+ INFO 2023-06-18 14:00:16,845 [Rules] Found valid manual metadata: LanguageCode: ar, ManualVersion: 3-ar, LockCode: 463, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,845 [Rules] Found valid manual metadata: LanguageCode: cs, ManualVersion: 2-cs, LockCode: 058, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,846 [Rules] Found valid manual metadata: LanguageCode: da, ManualVersion: 1-da, LockCode: 354, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,847 [Rules] Found valid manual metadata: LanguageCode: de, ManualVersion: 1-de, LockCode: 558, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,848 [Rules] Found valid manual metadata: LanguageCode: en, ManualVersion: 1, LockCode: 241, Seed: 1, Revision: 4
+ INFO 2023-06-18 14:00:16,848 [Rules] Found valid manual metadata: LanguageCode: eo, ManualVersion: 2-eo, LockCode: 547, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,849 [Rules] Found valid manual metadata: LanguageCode: es, ManualVersion: 1-es, LockCode: 925, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,850 [Rules] Found valid manual metadata: LanguageCode: fi, ManualVersion: 1-fi, LockCode: 873, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,851 [Rules] Found valid manual metadata: LanguageCode: fr, ManualVersion: 1-fr, LockCode: 750, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,852 [Rules] Found valid manual metadata: LanguageCode: he, ManualVersion: 2-he, LockCode: 614, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,852 [Rules] Found valid manual metadata: LanguageCode: hu, ManualVersion: 2-hu, LockCode: 517, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,853 [Rules] Found valid manual metadata: LanguageCode: ko, ManualVersion: 1-ko, LockCode: 964, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,854 [Rules] Found valid manual metadata: LanguageCode: it, ManualVersion: 1-it, LockCode: 345, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,855 [Rules] Found valid manual metadata: LanguageCode: ja, ManualVersion: 1-ja, LockCode: 122, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,855 [Rules] Found valid manual metadata: LanguageCode: nb, ManualVersion: 2-nb, LockCode: 477, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,856 [Rules] Found valid manual metadata: LanguageCode: nl, ManualVersion: 2-nl, LockCode: 474, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,857 [Rules] Found valid manual metadata: LanguageCode: pl, ManualVersion: 2-pl, LockCode: 856, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,858 [Rules] Found valid manual metadata: LanguageCode: pt-BR, ManualVersion: 2-pt-BR, LockCode: 622, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,858 [Rules] Found valid manual metadata: LanguageCode: pt-PT, ManualVersion: 3-pt-PT, LockCode: 806, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,859 [Rules] Found valid manual metadata: LanguageCode: ro, ManualVersion: 1-ro, LockCode: 626, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,860 [Rules] Found valid manual metadata: LanguageCode: ru, ManualVersion: 2-ru, LockCode: 317, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,861 [Rules] Found valid manual metadata: LanguageCode: sv, ManualVersion: 1-sv, LockCode: 453, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,862 [Rules] Found valid manual metadata: LanguageCode: th, ManualVersion: 1-th, LockCode: 248, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,864 [Rules] Found valid manual metadata: LanguageCode: tr, ManualVersion: 1-tr, LockCode: 993, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,865 [Rules] Found valid manual metadata: LanguageCode: uk, ManualVersion: 1-uk, LockCode: 775, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,867 [Rules] Found valid manual metadata: LanguageCode: zh-CN, ManualVersion: 1-zh-CN, LockCode: 931, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,868 [Rules] Found valid manual metadata: LanguageCode: zh-TW, ManualVersion: 1-zh-TW, LockCode: 917, Seed: 1, Revision: 1
+ INFO 2023-06-18 14:00:16,879 [Rules] 27 valid manual meta data loaded.
+ INFO 2023-06-18 14:00:16,881 [Rules] Generating rules for language code "ru"
+DEBUG 2023-06-18 14:00:16,884 [Rules] Generating BombRules...
+DEBUG 2023-06-18 14:00:16,952 [MorseCodeRuleSetGenerator] 42 characters added: абвгдежзийклмнопрстуфхцчшщъьыэюя0123456789
+DEBUG 2023-06-18 14:00:16,965 [BombRules] BombRules: LanguageCode: ru, ManualVersion: 2-ru, LockCode: 317, Seed: 1, Revision: 1
+DEBUG 2023-06-18 14:00:16,966 [BombRules] WireSet Rules:
+3 wires:
+If there are no red wires, cut the second wire.
+Otherwise, if the last wire is white, cut the last wire.
+Otherwise, if there is more than one blue wire, cut the last blue wire.
+Otherwise, cut the last wire.
+
+4 wires:
+If there is more than one red wire and the last digit of the serial number is odd, cut the last red wire.
+Otherwise, if the last wire is yellow and there are no red wires, cut the first wire.
+Otherwise, if there is exactly one blue wire, cut the first wire.
+Otherwise, if there is more than one yellow wire, cut the last wire.
+Otherwise, cut the second wire.
+
+5 wires:
+If the last wire is black and the last digit of the serial number is odd, cut the fourth wire.
+Otherwise, if there is exactly one red wire and there is more than one yellow wire, cut the first wire.
+Otherwise, if there are no black wires, cut the second wire.
+Otherwise, cut the first wire.
+
+6 wires:
+If there are no yellow wires and the last digit of the serial number is odd, cut the third wire.
+Otherwise, if there is exactly one yellow wire and there is more than one white wire, cut the fourth wire.
+Otherwise, if there are no red wires, cut the last wire.
+Otherwise, cut the fourth wire.
+
+
+DEBUG 2023-06-18 14:00:16,967 [BombRules] Button Rules:
+Initial rules
+If the button is blue and the button says "Abort", hold the button and refer to "Releasing a Held Button".
+If there is more than 1 battery on the bomb and the button says "Detonate", press and immediately release the button.
+If the button is white and there is a lit indicator with label CAR, hold the button and refer to "Releasing a Held Button".
+If there are more than 2 batteries on the bomb and there is a lit indicator with label FRK, press and immediately release the button.
+If the button is yellow, hold the button and refer to "Releasing a Held Button".
+If the button is red and the button says "Hold", press and immediately release the button.
+If none of the above apply, hold the button and refer to "Releasing a Held Button".
+
+On Hold Rules
+If Blue strip:, release when the countdown timer has a 4 in any position..
+If White strip:, release when the countdown timer has a 1 in any position..
+If Yellow strip:, release when the countdown timer has a 5 in any position..
+If Any other color strip:, release when the countdown timer has a 1 in any position..
+
+DEBUG 2023-06-18 14:00:16,968 [BombRules] Keypad Rules:
+Ϙ,Ѧ,ƛ,Ϟ,Ѭ,ϗ,Ͽ
+Ӭ,Ϙ,Ͽ,Ҩ,☆,ϗ,¿
+©,Ѽ,Ҩ,Җ,Ԇ,ƛ,☆
+Ϭ,¶,ѣ,Ѭ,Җ,¿,ټ
+Ψ,ټ,ѣ,Ͼ,¶,ѯ,★
+Ϭ,Ӭ,҂,ӕ,Ψ,Ҋ,Ω
+
+DEBUG 2023-06-18 14:00:16,969 [BombRules] Simon Rules:
+HASVOWEL:
+0 Strikes: Blue, Red, Yellow, Green, 
+1 Strikes: Yellow, Green, Blue, Red, 
+2 Strikes: Green, Red, Yellow, Blue, 
+OTHERWISE:
+0 Strikes: Blue, Yellow, Green, Red, 
+1 Strikes: Red, Blue, Yellow, Green, 
+2 Strikes: Yellow, Green, Blue, Red, 
+
+DEBUG 2023-06-18 14:00:16,971 [BombRules] Who's On First Rules:
+Display Word "Look At" Index:
+WhosOnFirst/rule_DISPLAY1 ("ДА"): 2, WhosOnFirst/rule_DISPLAY2 ("ПЕРВОЕ"): 1, WhosOnFirst/rule_DISPLAY3 ("ЭКРАН"): 5, WhosOnFirst/rule_DISPLAY4 ("ГОТОВО"): 1, WhosOnFirst/rule_DISPLAY5 ("ДРУГОЙ"): 5, WhosOnFirst/rule_DISPLAY6 ("НИЧЕГО"): 2, WhosOnFirst/rule_DISPLAY7 (""): 4, WhosOnFirst/rule_DISPLAY8 ("ПУСТО"): 3, WhosOnFirst/rule_DISPLAY9 ("НЕТ"): 5, WhosOnFirst/rule_DISPLAY10 ("ВЕСЕЛО"): 2, WhosOnFirst/rule_DISPLAY11 ("ВЕСИЛА"): 5, WhosOnFirst/rule_DISPLAY12 ("ВЕСИЛО"): 3, WhosOnFirst/rule_DISPLAY13 ("КОРИТСЯ"): 3, WhosOnFirst/rule_DISPLAY14 ("КОРИЦА"): 4, WhosOnFirst/rule_DISPLAY15 ("КОРИТЬСЯ"): 4, WhosOnFirst/rule_DISPLAY16 ("СТОЙ"): 5, WhosOnFirst/rule_DISPLAY17 ("ГЛАЗ"): 3, WhosOnFirst/rule_DISPLAY18 ("ГЛАС"): 5, WhosOnFirst/rule_DISPLAY19 ("ПОРОГ"): 3, WhosOnFirst/rule_DISPLAY20 ("ПОРОК"): 3, WhosOnFirst/rule_DISPLAY21 ("ПАРОК"): 0, WhosOnFirst/rule_DISPLAY22 ("КРАБ"): 5, WhosOnFirst/rule_DISPLAY23 ("КРАП"): 4, WhosOnFirst/rule_DISPLAY24 ("КРАББ"): 3, WhosOnFirst/rule_DISPLAY25 ("ПАС"): 2, WhosOnFirst/rule_DISPLAY26 ("ПАСС"): 5, WhosOnFirst/rule_DISPLAY27 ("ПАЗ"): 1, WhosOnFirst/rule_DISPLAY28 ("ПОГОДИ"): 5, 
+
+Precedent Map:
+WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"): WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ")
+WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"): WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ")
+WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"): WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА")
+WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"): WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ")
+WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"): WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО")
+WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"): WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ")
+WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"): WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО")
+WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"): WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ")
+WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"): WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО")
+WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"): WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ")
+WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"): WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА")
+WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"): WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО")
+WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"): WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА")
+WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"): WhosOnFirst/rule_KEYPAD_group1_10 ("ВЕСЕЛО"), WhosOnFirst/rule_KEYPAD_group1_11 ("ВЕСИЛА"), WhosOnFirst/rule_KEYPAD_group1_6 ("ДА"), WhosOnFirst/rule_KEYPAD_group1_1 ("ГОТОВО"), WhosOnFirst/rule_KEYPAD_group1_14 ("СТОЙ"), WhosOnFirst/rule_KEYPAD_group1_12 ("ПОСТОЙ"), WhosOnFirst/rule_KEYPAD_group1_5 ("НИЧЕГО"), WhosOnFirst/rule_KEYPAD_group1_8 ("ЕЩЕ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_4 ("ПУСТО"), WhosOnFirst/rule_KEYPAD_group1_9 ("ВЕСИЛО"), WhosOnFirst/rule_KEYPAD_group1_2 ("ПЕРВОЕ"), WhosOnFirst/rule_KEYPAD_group1_7 ("ЕЩЁ РАЗ"), WhosOnFirst/rule_KEYPAD_group1_3 ("НЕТ"), WhosOnFirst/rule_KEYPAD_group1_13 ("ПОГОДИ")
+WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"): WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК")
+WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"): WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ")
+WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"): WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ")
+WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"): WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?")
+WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"): WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ")
+WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"): WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ")
+WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"): WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ")
+WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"): WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ")
+WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"): WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?")
+WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"): WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ")
+WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"): WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ")
+WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"): WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?")
+WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"): WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС")
+WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"): WhosOnFirst/rule_KEYPAD_group2_4 ("ВСЁ"), WhosOnFirst/rule_KEYPAD_group2_11 ("ДАЛЬШЕ"), WhosOnFirst/rule_KEYPAD_group2_6 ("ИТАК"), WhosOnFirst/rule_KEYPAD_group2_5 ("И ТАК"), WhosOnFirst/rule_KEYPAD_group2_12 ("ЧЁ?"), WhosOnFirst/rule_KEYPAD_group2_10 ("ЖМИ"), WhosOnFirst/rule_KEYPAD_group2_8 ("ПАСС"), WhosOnFirst/rule_KEYPAD_group2_9 ("ПАЗ"), WhosOnFirst/rule_KEYPAD_group2_7 ("ПАС"), WhosOnFirst/rule_KEYPAD_group2_1 ("ВО ВСЕ"), WhosOnFirst/rule_KEYPAD_group2_14 ("ЧТО?"), WhosOnFirst/rule_KEYPAD_group2_13 ("ЧЕ?"), WhosOnFirst/rule_KEYPAD_group2_2 ("ВОВСЕ"), WhosOnFirst/rule_KEYPAD_group2_3 ("ВСЕ")
+
+DEBUG 2023-06-18 14:00:16,974 [BombRules] Memory Rules:
+Stage 1:
+If the display is 1, press the button in the second position.
+If the display is 2, press the button in the second position.
+If the display is 3, press the button in the third position.
+If the display is 4, press the button in the fourth position.
+
+Stage 2:
+If the display is 1, press the button labeled "4".
+If the display is 2, press the button in the same position as you pressed in stage 1.
+If the display is 3, press the button in the first position.
+If the display is 4, press the button in the same position as you pressed in stage 1.
+
+Stage 3:
+If the display is 1, press the button with the same label you pressed in stage 2.
+If the display is 2, press the button with the same label you pressed in stage 1.
+If the display is 3, press the button in the third position.
+If the display is 4, press the button labeled "4".
+
+Stage 4:
+If the display is 1, press the button in the same position as you pressed in stage 1.
+If the display is 2, press the button in the first position.
+If the display is 3, press the button in the same position as you pressed in stage 2.
+If the display is 4, press the button in the same position as you pressed in stage 2.
+
+Stage 5:
+If the display is 1, press the button with the same label you pressed in stage 1.
+If the display is 2, press the button with the same label you pressed in stage 2.
+If the display is 3, press the button with the same label you pressed in stage 4.
+If the display is 4, press the button with the same label you pressed in stage 3.
+
+
+DEBUG 2023-06-18 14:00:16,975 [BombRules] Morse Code Rules:
+FrequencyTermMap: 
+MorseComponent/rule_Option17 ("токарь"): 3.505 MHz
+MorseComponent/rule_Option16 ("мостик"): 3.515 MHz
+MorseComponent/rule_Option20 ("венок"): 3.522 MHz
+MorseComponent/rule_Option1 ("брать"): 3.532 MHz
+MorseComponent/rule_Option5 ("клара"): 3.535 MHz
+MorseComponent/rule_Option11 ("попей"): 3.542 MHz
+MorseComponent/rule_Option19 ("виток"): 3.545 MHz
+MorseComponent/rule_Option18 ("восток"): 3.552 MHz
+MorseComponent/rule_Option21 ("вилка"): 3.555 MHz
+MorseComponent/rule_Option8 ("порок"): 3.565 MHz
+MorseComponent/rule_Option14 ("койка"): 3.572 MHz
+MorseComponent/rule_Option13 ("рокер"): 3.575 MHz
+MorseComponent/rule_Option10 ("помой"): 3.582 MHz
+MorseComponent/rule_Option9 ("покой"): 3.592 MHz
+MorseComponent/rule_Option3 ("борис"): 3.595 MHz
+MorseComponent/rule_Option7 ("порог"): 3.600 MHz
+
+DEBUG 2023-06-18 14:00:16,976 [BombRules] Venn Wire Rules:
+[Red:False Blue:False Symbol:False LED:False]: Cut
+[Red:False Blue:False Symbol:False LED:True]: DoNotCut
+[Red:False Blue:False Symbol:True LED:False]: Cut
+[Red:False Blue:False Symbol:True LED:True]: CutIfTwoOrMoreBatteriesPresent
+[Red:False Blue:True Symbol:False LED:False]: CutIfSerialEven
+[Red:False Blue:True Symbol:False LED:True]: CutIfParallelPortPresent
+[Red:False Blue:True Symbol:True LED:False]: DoNotCut
+[Red:False Blue:True Symbol:True LED:True]: CutIfParallelPortPresent
+[Red:True Blue:False Symbol:False LED:False]: CutIfSerialEven
+[Red:True Blue:False Symbol:False LED:True]: CutIfTwoOrMoreBatteriesPresent
+[Red:True Blue:False Symbol:True LED:False]: Cut
+[Red:True Blue:False Symbol:True LED:True]: CutIfTwoOrMoreBatteriesPresent
+[Red:True Blue:True Symbol:False LED:False]: CutIfSerialEven
+[Red:True Blue:True Symbol:False LED:True]: CutIfSerialEven
+[Red:True Blue:True Symbol:True LED:False]: CutIfParallelPortPresent
+[Red:True Blue:True Symbol:True LED:True]: DoNotCut
+
+DEBUG 2023-06-18 14:00:16,978 [BombRules] Wire Sequence Rules:
+BLACK Wires: First: [A, B or C], Second: [A or C], Third: [B], Fourth: [A or C], Fifth: [B], Sixth: [B or C], Seventh: [A or B], Eighth: [C], Ninth: [C], 
+BLUE Wires: First: [B], Second: [A or C], Third: [B], Fourth: [A], Fifth: [B], Sixth: [B or C], Seventh: [C], Eighth: [A or C], Ninth: [A], 
+RED Wires: First: [C], Second: [B], Third: [A], Fourth: [A or C], Fifth: [B], Sixth: [A or C], Seventh: [A, B or C], Eighth: [A or B], Ninth: [B], 
+
+DEBUG 2023-06-18 14:00:16,979 [BombRules] Maze Rules:
+Maze 0: 6,320,400,384,384,256,288,96,320,288,352,96,224,192,160,192,32,192,288,320,288,320,160,320,160,96,96,96,352,224,352,224,192,144,128,384,160
+Maze 1: 6,352,320,384,256,384,416,64,160,320,176,448,288,224,320,160,320,384,160,320,160,320,160,320,288,64,304,96,448,160,96,224,192,128,384,384,160
+Maze 2: 6,320,416,320,384,384,288,96,448,128,384,288,96,192,384,384,384,160,96,448,288,320,400,384,160,320,160,192,384,384,288,192,384,384,400,384,160
+Maze 3: 6,336,384,384,400,256,288,192,384,288,352,96,96,352,320,160,96,96,224,96,96,320,32,96,352,96,96,224,96,192,160,192,128,384,128,384,416
+Maze 4: 6,352,320,256,384,384,416,96,96,192,288,320,288,96,96,352,96,96,96,96,64,160,192,32,112,64,160,336,416,224,96,192,416,192,384,384,160
+Maze 5: 6,448,384,256,288,320,288,320,384,160,192,160,96,192,384,416,320,432,96,352,320,384,128,384,160,80,160,320,384,288,352,192,384,160,448,128,160
+Maze 6: 6,320,384,288,320,384,288,112,320,160,192,416,112,96,224,320,256,288,96,192,288,224,96,96,96,320,160,320,160,192,32,192,384,160,448,384,160
+Maze 7: 6,448,256,384,384,384,288,320,32,320,288,448,32,96,224,96,208,288,96,208,288,96,352,96,96,320,160,192,32,96,96,192,384,384,160,224,224
+Maze 8: 6,448,384,256,384,400,288,320,384,32,448,384,160,96,336,160,320,384,288,96,224,320,160,320,160,64,384,160,352,192,288,192,384,384,128,416,224
+
+DEBUG 2023-06-18 14:00:16,980 [BombRules] Password Rules:
+Possibilities: АЛЛЕЯ, БОМБА, ВВЕРХ, ВЗРЫВ, ВНИЗУ, ВЬЮГА, ГОРОХ, ГОТОВ, ГУСТО, ДАВАЙ, ДАВНО, КНИГА, КОНЕЦ, ЛИЛИЯ, ЛИНИЯ, МОЖНО, НАЗАД, НРАВЫ, ПЕСЕЦ, ПЕСНЯ, ПОРОХ, ПОРЫВ, ПОТОМ, ПРАВО, ПУСТО, РУМБА, СКОРО, СУПЕР, ТРАВЫ, ТУМБА, ТУНЕЦ, ФУГАС, ШПРИЦ, ЩИПОК, ЩИПЦЫ
+DEBUG 2023-06-18 14:00:16,981 [BombRules] Needy Knob Rules:
+Up Position:
+OOXOXX
+XXXXOX
+
+XOXOXO
+OXXOXX
+
+Down Position:
+OXXOOX
+XXXXOX
+
+XOXOXO
+OXOOOX
+
+Left Position:
+OOOOXO
+XOOXXX
+
+OOOOXO
+OOOXXO
+
+Right Position:
+XOXXXX
+XXXOXO
+
+XOXXOO
+XXXOXO
+
+
+DEBUG 2023-06-18 14:00:16,981 [Rules] BombRules generation complete.
+DEBUG 2023-06-18 14:00:17,557 [SecondScreenInteractiveManual] Changing state from Loading to Loading
+ INFO 2023-06-18 14:00:17,559 [KTInputManager] InControl Platform: WINDOWS 10 HOME 64BIT BUILD 19045
+ INFO 2023-06-18 14:00:17,560 [KTInputManager] InControl Devices: 0
+ INFO 2023-06-18 14:00:17,561 [KTInputManager] Active device: None () [Supported] [Platform: WINDOWS 10 HOME 64BIT BUILD 19045]
+ INFO 2023-06-18 14:00:17,561 [KTInputManager] Active SecondScreen device: None () [Supported] [Platform: WINDOWS 10 HOME 64BIT BUILD 19045]
+DEBUG 2023-06-18 14:00:17,565 [UserManager] Initialized UserManager
+ INFO 2023-06-18 14:00:17,770 [ServicesSteam] Steamworks.NET is initialized. Now logged in as tuttop!
+DEBUG 2023-06-18 14:00:17,850 [SecondScreenManager] VRMode=false, disabling.
+ INFO 2023-06-18 14:00:17,851 [SecondScreenManager] SecondScreen mode changed from Disabled to Disabled
+DEBUG 2023-06-18 14:00:17,968 [Localization] OnBeforeLocalizeEvent!
+DEBUG 2023-06-18 14:00:18,045 [Localization] OnLocalizeEvent!
+ INFO 2023-06-18 14:00:18,048 [LoadingManager] Loading: mainScene
+ INFO 2023-06-18 14:00:18,785 [LoadingManager] Finished loading: 0.73 sec(s)
+DEBUG 2023-06-18 14:00:20,061 [LoadingManager] Could not find any connected and supported InControl devices. Prompting user to connect, if the current platform has a native prompt...
+ INFO 2023-06-18 14:00:21,259 [MissionManager] MissionManager initialized. 34 missions available.
+ INFO 2023-06-18 14:00:21,261 [RecordManager] Loading records from records.xml...
+ INFO 2023-06-18 14:00:21,263 [FileUtilityHelper] Attempting to load "C:/Users/demge/AppData/LocalLow/Steel Crate Games/Keep Talking and Nobody Explodes\records.xml"...
+ INFO 2023-06-18 14:00:21,304 [FileUtilityHelper] Successfully loaded "C:/Users/demge/AppData/LocalLow/Steel Crate Games/Keep Talking and Nobody Explodes\records.xml".
+ INFO 2023-06-18 14:00:21,308 [RecordManager] Loading best time records from best_times.xml...
+ INFO 2023-06-18 14:00:21,310 [FileUtilityHelper] Attempting to load "C:/Users/demge/AppData/LocalLow/Steel Crate Games/Keep Talking and Nobody Explodes\best_times.xml"...
+ INFO 2023-06-18 14:00:21,341 [FileUtilityHelper] Successfully loaded "C:/Users/demge/AppData/LocalLow/Steel Crate Games/Keep Talking and Nobody Explodes\best_times.xml".
+ INFO 2023-06-18 14:00:21,344 [RecordManager] 65 recent records found:
+ INFO 2023-06-18 14:00:21,348 [RecordManager] Record: 65 Mission: payattention Result: Defused Seed: 1038651808 Modules: 5 Solved: 4 TimeElapsed: 149.2674  RealTimeElapsed: 157.3379 Strikes: 0
+ INFO 2023-06-18 14:00:21,351 [RecordManager] Record: 64 Mission: payattention Result: ExplodedDueToStrikes Seed: 1815937806 Modules: 5 Solved: 2 TimeElapsed: 88.13956  RealTimeElapsed: 96.14941 Strikes: 1
+ INFO 2023-06-18 14:00:21,353 [RecordManager] Record: 63 Mission: asmallwrinkle Result: Defused Seed: 1289825661 Modules: 6 Solved: 5 TimeElapsed: 258.3203  RealTimeElapsed: 266.3828 Strikes: 0
+ INFO 2023-06-18 14:00:21,354 [RecordManager] Record: 62 Mission: asmallwrinkle Result: ExplodedDueToStrikes Seed: 1160938192 Modules: 6 Solved: 3 TimeElapsed: 60.22835  RealTimeElapsed: 68.27051 Strikes: 1
+ INFO 2023-06-18 14:00:21,356 [RecordManager] Record: 61 Mission: eightminutes Result: Defused Seed: 91512077 Modules: 8 Solved: 8 TimeElapsed: 414.063  RealTimeElapsed: 360.4575 Strikes: 1
+ INFO 2023-06-18 14:00:21,358 [RecordManager] Record: 60 Mission: eightminutes Result: ExplodedDueToTime Seed: 1053316109 Modules: 8 Solved: 6 TimeElapsed: 480.0207  RealTimeElapsed: 337.9983 Strikes: 2
+ INFO 2023-06-18 14:00:21,360 [RecordManager] Record: 59 Mission: noroomforerror Result: Defused Seed: 2066214774 Modules: 5 Solved: 5 TimeElapsed: 207.9458  RealTimeElapsed: 216.0054 Strikes: 0
+ INFO 2023-06-18 14:00:21,362 [RecordManager] Record: 58 Mission: pickupthepacetwo Result: Defused Seed: 1726781588 Modules: 5 Solved: 5 TimeElapsed: 141.1652  RealTimeElapsed: 149.2222 Strikes: 0
+ INFO 2023-06-18 14:00:21,364 [RecordManager] Record: 57 Mission: fairgame Result: Defused Seed: 373753840 Modules: 5 Solved: 5 TimeElapsed: 267.171  RealTimeElapsed: 275.2542 Strikes: 0
+ INFO 2023-06-18 14:00:21,365 [RecordManager] Record: 56 Mission: fairgame Result: ExplodedDueToTime Seed: 782243229 Modules: 5 Solved: 4 TimeElapsed: 300.0001  RealTimeElapsed: 250.9844 Strikes: 2
+ INFO 2023-06-18 14:00:21,367 [RecordManager] Record: 55 Mission: fairgame Result: ExplodedDueToTime Seed: 1856556498 Modules: 5 Solved: 4 TimeElapsed: 300.0215  RealTimeElapsed: 308.0691 Strikes: 0
+ INFO 2023-06-18 14:00:21,369 [RecordManager] Record: 54 Mission: fairgame Result: ExplodedDueToTime Seed: 636892996 Modules: 5 Solved: 3 TimeElapsed: 300.0291  RealTimeElapsed: 261.639 Strikes: 1
+ INFO 2023-06-18 14:00:21,371 [RecordManager] Record: 53 Mission: giantleap Result: ExplodedDueToTime Seed: 1285318756 Modules: 4 Solved: 3 TimeElapsed: 300.0083  RealTimeElapsed: 277.2577 Strikes: 1
+ INFO 2023-06-18 14:00:21,373 [RecordManager] Record: 52 Mission: giantleap Result: ExplodedDueToStrikes Seed: 1621831272 Modules: 4 Solved: 2 TimeElapsed: 166.4329  RealTimeElapsed: 173.1876 Strikes: 3
+ INFO 2023-06-18 14:00:21,374 [RecordManager] Record: 51 Mission: giantleap Result: ExplodedDueToTime Seed: 621518661 Modules: 4 Solved: 1 TimeElapsed: 300.0206  RealTimeElapsed: 308.0652 Strikes: 0
+ INFO 2023-06-18 14:00:21,376 [RecordManager] Record: 50 Mission: giantleap Result: ExplodedDueToTime Seed: 1373212730 Modules: 4 Solved: 3 TimeElapsed: 300.0107  RealTimeElapsed: 308.051 Strikes: 0
+ INFO 2023-06-18 14:00:21,378 [RecordManager] Record: 49 Mission: somethingoldsomethingnew Result: Defused Seed: 1020826277 Modules: 3 Solved: 3 TimeElapsed: 256.3455  RealTimeElapsed: 239.1453 Strikes: 1
+ INFO 2023-06-18 14:00:21,380 [RecordManager] Record: 48 Mission: onestepup Result: ExplodedDueToTime Seed: 783821127 Modules: 4 Solved: 3 TimeElapsed: 300.0011  RealTimeElapsed: 259.7047 Strikes: 2
+ INFO 2023-06-18 14:00:21,381 [RecordManager] Record: 47 Mission: freeplay Result: Incomplete Seed: 579976960 Modules: 3 HasNeedy: False IsHardcore: False Solved: 0 TimeElapsed: 0  RealTimeElapsed: 0 Strikes: 0
+ INFO 2023-06-18 14:00:21,383 [RecordManager] Record: 46 Mission: freeplay Result: ExplodedDueToTime Seed: 1798095595 Modules: 3 HasNeedy: False IsHardcore: False Solved: 0 TimeElapsed: 300.003  RealTimeElapsed: 308.0169 Strikes: 0
+ INFO 2023-06-18 14:00:21,385 [RecordManager] Record: 45 Mission: firsttime Result: Defused Seed: 21703043 Modules: 3 Solved: 3 TimeElapsed: 72.42809  RealTimeElapsed: 80.47696 Strikes: 0
+ INFO 2023-06-18 14:00:21,387 [RecordManager] Record: 44 Mission: fairgame Result: ExplodedDueToTime Seed: 586675469 Modules: 5 Solved: 2 TimeElapsed: 300.0007  RealTimeElapsed: 270.5347 Strikes: 1
+ INFO 2023-06-18 14:00:21,389 [RecordManager] Record: 43 Mission: onestepup Result: Defused Seed: 1259965337 Modules: 4 Solved: 4 TimeElapsed: 179.137  RealTimeElapsed: 187.1703 Strikes: 0
+ INFO 2023-06-18 14:00:21,390 [RecordManager] Record: 42 Mission: onestepup Result: ExplodedDueToStrikes Seed: 1871571072 Modules: 4 Solved: 3 TimeElapsed: 250.9765  RealTimeElapsed: 257.9303 Strikes: 3
+ INFO 2023-06-18 14:00:21,392 [RecordManager] Record: 41 Mission: doubleyourmoney Result: Defused Seed: 1627976824 Modules: 6 Solved: 6 TimeElapsed: 232.1992  RealTimeElapsed: 213.7915 Strikes: 1
+ INFO 2023-06-18 14:00:21,394 [RecordManager] Record: 40 Mission: fairgame Result: ExplodedDueToTime Seed: 781599325 Modules: 5 Solved: 4 TimeElapsed: 300.0083  RealTimeElapsed: 305.1523 Strikes: 1
+ INFO 2023-06-18 14:00:21,396 [RecordManager] Record: 39 Mission: onestepup Result: Defused Seed: 1271295039 Modules: 4 Solved: 4 TimeElapsed: 211.2052  RealTimeElapsed: 219.2511 Strikes: 0
+ INFO 2023-06-18 14:00:21,398 [RecordManager] Record: 38 Mission: onestepup Result: Incomplete Seed: 546479477 Modules: 4 Solved: 0 TimeElapsed: 0  RealTimeElapsed: 0 Strikes: 0
+ INFO 2023-06-18 14:00:21,400 [RecordManager] Record: 37 Mission: doubleyourmoney Result: Incomplete Seed: 1109767562 Modules: 6 Solved: 0 TimeElapsed: 0  RealTimeElapsed: 0 Strikes: 0
+ INFO 2023-06-18 14:00:21,402 [RecordManager] Record: 36 Mission: giantleap Result: Defused Seed: 1698122597 Modules: 4 Solved: 4 TimeElapsed: 210.4123  RealTimeElapsed: 218.452 Strikes: 0
+ INFO 2023-06-18 14:00:21,403 [RecordManager] Record: 35 Mission: somethingsdifferent Result: Defused Seed: 1236350419 Modules: 3 Solved: 3 TimeElapsed: 159.0273  RealTimeElapsed: 167.087 Strikes: 0
+ INFO 2023-06-18 14:00:21,405 [RecordManager] Record: 34 Mission: somethingsdifferent Result: ExplodedDueToStrikes Seed: 96683842 Modules: 3 Solved: 2 TimeElapsed: 244.5207  RealTimeElapsed: 206.6711 Strikes: 3
+ INFO 2023-06-18 14:00:21,407 [RecordManager] Record: 33 Mission: somethingsdifferent Result: ExplodedDueToTime Seed: 1797164828 Modules: 3 Solved: 2 TimeElapsed: 300.0014  RealTimeElapsed: 273.3831 Strikes: 1
+ INFO 2023-06-18 14:00:21,409 [RecordManager] Record: 32 Mission: ahiddenmessage Result: Defused Seed: 1819863318 Modules: 3 Solved: 3 TimeElapsed: 295.3429  RealTimeElapsed: 252.1812 Strikes: 1
+ INFO 2023-06-18 14:00:21,411 [RecordManager] Record: 31 Mission: ahiddenmessage Result: ExplodedDueToStrikes Seed: 872748964 Modules: 3 Solved: 0 TimeElapsed: 255.7675  RealTimeElapsed: 262.6332 Strikes: 3
+ INFO 2023-06-18 14:00:21,412 [RecordManager] Record: 30 Mission: ahiddenmessage Result: ExplodedDueToTime Seed: 1041940578 Modules: 3 Solved: 2 TimeElapsed: 300.0064  RealTimeElapsed: 308.0261 Strikes: 0
+ INFO 2023-06-18 14:00:21,414 [RecordManager] Record: 29 Mission: pickupthepace Result: Defused Seed: 510124233 Modules: 3 Solved: 3 TimeElapsed: 140.4081  RealTimeElapsed: 148.4338 Strikes: 0
+ INFO 2023-06-18 14:00:21,416 [RecordManager] Record: 28 Mission: pickupthepace Result: ExplodedDueToTime Seed: 2025359364 Modules: 3 Solved: 2 TimeElapsed: 180.0021  RealTimeElapsed: 174.9734 Strikes: 1
+ INFO 2023-06-18 14:00:21,418 [RecordManager] Record: 27 Mission: onestepup Result: Defused Seed: 1547649401 Modules: 4 Solved: 4 TimeElapsed: 255.0432  RealTimeElapsed: 219.9633 Strikes: 1
+ INFO 2023-06-18 14:00:21,420 [RecordManager] Record: 26 Mission: onestepup Result: ExplodedDueToStrikes Seed: 1049524876 Modules: 4 Solved: 3 TimeElapsed: 277.7064  RealTimeElapsed: 218.1769 Strikes: 3
+ INFO 2023-06-18 14:00:21,422 [RecordManager] Record: 25 Mission: onestepup Result: ExplodedDueToTime Seed: 1581113002 Modules: 4 Solved: 3 TimeElapsed: 300.0073  RealTimeElapsed: 289.1567 Strikes: 1
+ INFO 2023-06-18 14:00:21,424 [RecordManager] Record: 24 Mission: doubleyourmoney Result: Defused Seed: 1294442319 Modules: 6 Solved: 6 TimeElapsed: 265.3291  RealTimeElapsed: 242.3695 Strikes: 1
+ INFO 2023-06-18 14:00:21,425 [RecordManager] Record: 23 Mission: pickupthepace Result: ExplodedDueToTime Seed: 2062723479 Modules: 3 Solved: 2 TimeElapsed: 180.0096  RealTimeElapsed: 171.4932 Strikes: 1
+ INFO 2023-06-18 14:00:21,427 [RecordManager] Record: 22 Mission: pickupthepace Result: Incomplete Seed: 2095363487 Modules: 3 Solved: 0 TimeElapsed: 0  RealTimeElapsed: 0 Strikes: 0
+ INFO 2023-06-18 14:00:21,430 [RecordManager] Record: 21 Mission: onestepup Result: Defused Seed: 365758537 Modules: 4 Solved: 4 TimeElapsed: 227.4027  RealTimeElapsed: 235.4544 Strikes: 0
+ INFO 2023-06-18 14:00:21,431 [RecordManager] Record: 20 Mission: onestepup Result: ExplodedDueToStrikes Seed: 253205730 Modules: 4 Solved: 3 TimeElapsed: 284.8929  RealTimeElapsed: 246.5024 Strikes: 3
+ INFO 2023-06-18 14:00:21,433 [RecordManager] Record: 19 Mission: pickupthepace Result: ExplodedDueToTime Seed: 1167985179 Modules: 3 Solved: 2 TimeElapsed: 180.0059  RealTimeElapsed: 186.5518 Strikes: 1
+ INFO 2023-06-18 14:00:21,435 [RecordManager] Record: 18 Mission: pickupthepace Result: ExplodedDueToTime Seed: 803373280 Modules: 3 Solved: 2 TimeElapsed: 180.0045  RealTimeElapsed: 178.0884 Strikes: 1
+ INFO 2023-06-18 14:00:21,437 [RecordManager] Record: 17 Mission: pickupthepace Result: ExplodedDueToTime Seed: 904889187 Modules: 3 Solved: 2 TimeElapsed: 180.003  RealTimeElapsed: 184.9453 Strikes: 1
+ INFO 2023-06-18 14:00:21,439 [RecordManager] Record: 16 Mission: pickupthepace Result: ExplodedDueToTime Seed: 1083734945 Modules: 3 Solved: 2 TimeElapsed: 180.0061  RealTimeElapsed: 188.0203 Strikes: 0
+ INFO 2023-06-18 14:00:21,441 [RecordManager] Record: 15 Mission: pickupthepace Result: ExplodedDueToStrikes Seed: 1905297570 Modules: 3 Solved: 2 TimeElapsed: 171.5829  RealTimeElapsed: 168.1196 Strikes: 3
+ INFO 2023-06-18 14:00:21,443 [RecordManager] Record: 14 Mission: pickupthepace Result: ExplodedDueToStrikes Seed: 1141761201 Modules: 3 Solved: 1 TimeElapsed: 161.4246  RealTimeElapsed: 153.8994 Strikes: 3
+ INFO 2023-06-18 14:00:21,444 [RecordManager] Record: 13 Mission: pickupthepace Result: ExplodedDueToStrikes Seed: 788121948 Modules: 3 Solved: 0 TimeElapsed: 153.7083  RealTimeElapsed: 130.3835 Strikes: 3
+ INFO 2023-06-18 14:00:21,446 [RecordManager] Record: 12 Mission: onestepup Result: Defused Seed: 2020542422 Modules: 4 Solved: 4 TimeElapsed: 278.6492  RealTimeElapsed: 277.96 Strikes: 1
+ INFO 2023-06-18 14:00:21,448 [RecordManager] Record: 11 Mission: doubleyourmoney Result: Defused Seed: 168454793 Modules: 6 Solved: 6 TimeElapsed: 205.7763  RealTimeElapsed: 210.5958 Strikes: 1
+ INFO 2023-06-18 14:00:21,450 [RecordManager] Record: 10 Mission: doubleyourmoney Result: Defused Seed: 2115832567 Modules: 6 Solved: 6 TimeElapsed: 134.3488  RealTimeElapsed: 142.3917 Strikes: 0
+ INFO 2023-06-18 14:00:21,452 [RecordManager] Record: 9 Mission: doubleyourmoney Result: ExplodedDueToStrikes Seed: 222443443 Modules: 6 Solved: 2 TimeElapsed: 128.2903  RealTimeElapsed: 118.9352 Strikes: 3
+ INFO 2023-06-18 14:00:21,454 [RecordManager] Record: 8 Mission: doubleyourmoney Result: Incomplete Seed: 488736181 Modules: 6 Solved: 0 TimeElapsed: 0  RealTimeElapsed: 0 Strikes: 0
+ INFO 2023-06-18 14:00:21,456 [RecordManager] Record: 7 Mission: doubleyourmoney Result: ExplodedDueToTime Seed: 1417751825 Modules: 6 Solved: 5 TimeElapsed: 300.0051  RealTimeElapsed: 231.5796 Strikes: 2
+ INFO 2023-06-18 14:00:21,457 [RecordManager] Record: 6 Mission: onestepup Result: ExplodedDueToStrikes Seed: 1886628282 Modules: 4 Solved: 3 TimeElapsed: 278.7572  RealTimeElapsed: 267.3018 Strikes: 3
+ INFO 2023-06-18 14:00:21,459 [RecordManager] Record: 5 Mission: doubleyourmoney Result: Defused Seed: 35268474 Modules: 6 Solved: 6 TimeElapsed: 165.3775  RealTimeElapsed: 173.4221 Strikes: 0
+ INFO 2023-06-18 14:00:21,461 [RecordManager] Record: 4 Mission: somethingoldsomethingnew Result: Defused Seed: 2076823285 Modules: 3 Solved: 3 TimeElapsed: 118.7895  RealTimeElapsed: 126.8324 Strikes: 0
+ INFO 2023-06-18 14:00:21,463 [RecordManager] Record: 3 Mission: firsttime Result: Defused Seed: 314722014 Modules: 3 Solved: 3 TimeElapsed: 138.2871  RealTimeElapsed: 125.5926 Strikes: 1
+ INFO 2023-06-18 14:00:21,465 [RecordManager] Record: 2 Mission: firsttime Result: ExplodedDueToStrikes Seed: 524567141 Modules: 3 Solved: 2 TimeElapsed: 190.8967  RealTimeElapsed: 191.5945 Strikes: 3
+ INFO 2023-06-18 14:00:21,467 [RecordManager] Record: 1 Mission: firsttime Result: ExplodedDueToStrikes Seed: 1870195877 Modules: 3 Solved: 0 TimeElapsed: 72.90074  RealTimeElapsed: 80.3033 Strikes: 3
+ INFO 2023-06-18 14:00:21,468 [RecordManager] Recent Record Summary: Success: 24 ExplodeDueToStrikes: 15 ExplodeDueToTime: 21
+ INFO 2023-06-18 14:00:21,470 [RecordManager] 14 Best Time records found:
+ INFO 2023-06-18 14:00:21,473 [RecordManager] Record: 45 Mission: firsttime Result: Defused Seed: 21703043 Modules: 3 Solved: 3 TimeElapsed: 72.42809  RealTimeElapsed: 80.47696 Strikes: 0
+ INFO 2023-06-18 14:00:21,475 [RecordManager] Record: 4 Mission: somethingoldsomethingnew Result: Defused Seed: 2076823285 Modules: 3 Solved: 3 TimeElapsed: 118.7895  RealTimeElapsed: 126.8324 Strikes: 0
+ INFO 2023-06-18 14:00:21,477 [RecordManager] Record: 10 Mission: doubleyourmoney Result: Defused Seed: 2115832567 Modules: 6 Solved: 6 TimeElapsed: 134.3488  RealTimeElapsed: 142.3917 Strikes: 0
+ INFO 2023-06-18 14:00:21,479 [RecordManager] Record: 43 Mission: onestepup Result: Defused Seed: 1259965337 Modules: 4 Solved: 4 TimeElapsed: 179.137  RealTimeElapsed: 187.1703 Strikes: 0
+ INFO 2023-06-18 14:00:21,481 [RecordManager] Record: 29 Mission: pickupthepace Result: Defused Seed: 510124233 Modules: 3 Solved: 3 TimeElapsed: 140.4081  RealTimeElapsed: 148.4338 Strikes: 0
+ INFO 2023-06-18 14:00:21,483 [RecordManager] Record: 32 Mission: ahiddenmessage Result: Defused Seed: 1819863318 Modules: 3 Solved: 3 TimeElapsed: 295.3429  RealTimeElapsed: 252.1812 Strikes: 1
+ INFO 2023-06-18 14:00:21,484 [RecordManager] Record: 35 Mission: somethingsdifferent Result: Defused Seed: 1236350419 Modules: 3 Solved: 3 TimeElapsed: 159.0273  RealTimeElapsed: 167.087 Strikes: 0
+ INFO 2023-06-18 14:00:21,486 [RecordManager] Record: 36 Mission: giantleap Result: Defused Seed: 1698122597 Modules: 4 Solved: 4 TimeElapsed: 210.4123  RealTimeElapsed: 218.452 Strikes: 0
+ INFO 2023-06-18 14:00:21,488 [RecordManager] Record: 57 Mission: fairgame Result: Defused Seed: 373753840 Modules: 5 Solved: 5 TimeElapsed: 267.171  RealTimeElapsed: 275.2542 Strikes: 0
+ INFO 2023-06-18 14:00:21,490 [RecordManager] Record: 58 Mission: pickupthepacetwo Result: Defused Seed: 1726781588 Modules: 5 Solved: 5 TimeElapsed: 141.1652  RealTimeElapsed: 149.2222 Strikes: 0
+ INFO 2023-06-18 14:00:21,492 [RecordManager] Record: 59 Mission: noroomforerror Result: Defused Seed: 2066214774 Modules: 5 Solved: 5 TimeElapsed: 207.9458  RealTimeElapsed: 216.0054 Strikes: 0
+ INFO 2023-06-18 14:00:21,494 [RecordManager] Record: 61 Mission: eightminutes Result: Defused Seed: 91512077 Modules: 8 Solved: 8 TimeElapsed: 414.063  RealTimeElapsed: 360.4575 Strikes: 1
+ INFO 2023-06-18 14:00:21,495 [RecordManager] Record: 63 Mission: asmallwrinkle Result: Defused Seed: 1289825661 Modules: 6 Solved: 5 TimeElapsed: 258.3203  RealTimeElapsed: 266.3828 Strikes: 0
+ INFO 2023-06-18 14:00:21,497 [RecordManager] Record: 65 Mission: payattention Result: Defused Seed: 1038651808 Modules: 5 Solved: 4 TimeElapsed: 149.2674  RealTimeElapsed: 157.3379 Strikes: 0
+ INFO 2023-06-18 14:00:21,501 [SceneManager] Creating game states...
+DEBUG 2023-06-18 14:00:21,516 [PrefabOverride] Prefab override: InputBased: True, CurrentControlType: Gaze, Path: "PC/Prefabs/ControlsPoster/ControlsPoster_gaze"
+ERROR 2023-06-18 14:00:21,518 [PrefabOverride] Prefab override failed because there is no prefab at the path specified for this config: InputBased: InputBased: True, CurrentControlType: Gaze, Path: PC/Prefabs/ControlsPoster/ControlsPoster_gaze
+ERROR 2023-06-18 14:00:21,604 [Unity] Exception: NullReferenceException: Object reference not set to an instance of an object 
+at: MissionTableOfContentsPageManager.SetupTableOfContentsMetaData ()
+MissionTableOfContentsPageManager.Init (Boolean force)
+SetupRoom.Awake ()
+UnityEngine.Object:Instantiate(GameObject, Vector3, Quaternion)
+SetupState:Awake()
+UnityEngine.Object:Instantiate(GameObject, Vector3, Quaternion)
+SceneManager:CreateGameStates()
+<Load>c__Iterator0:MoveNext()
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+SceneManager:Awake()
+
+DEBUG 2023-06-18 14:00:21,617 [MaterialOverride] Material override: InputBased: True, CurrentControlType: Gaze, Path: "PC/Materials/controls_poster_gaze"
+ERROR 2023-06-18 14:00:21,626 [Unity] Exception: NullReferenceException: Object reference not set to an instance of an object 
+at: SetupState.get_ShouldAllowFreeplayDevice ()
+SetupState.ConfigureForNormalPlay ()
+SetupState.Awake ()
+UnityEngine.Object:Instantiate(GameObject, Vector3, Quaternion)
+SceneManager:CreateGameStates()
+<Load>c__Iterator0:MoveNext()
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+SceneManager:Awake()
+
+ INFO 2023-06-18 14:00:21,639 [LeaderboardBulkSubmissionWorker] Submitting all unreported leaderboard scores.
+ INFO 2023-06-18 14:00:21,646 [ServicesSteam] ExecuteLeaderboardRequest
+ INFO 2023-06-18 14:00:21,648 [ServicesSteam] ExecuteLeaderboardRequest: Making SteamUserStats.FindOrCreateLeaderboard request for missionID pickupthepacetwo.
+ERROR 2023-06-18 14:00:21,674 [Unity] Exception: Exception: InputManager is not initialized. Call InputManager.Setup() first. 
+at: InControl.InputManager.AssertIsSetup ()
+InControl.InputManager.UpdateInternal ()
+InControl.InputManager.OnLevelWasLoaded ()
+InControl.InControlManager.OnSceneWasLoaded (Scene scene, LoadSceneMode loadSceneMode)
+UnityEngine.SceneManagement.SceneManager.Internal_SceneLoaded (Scene scene, LoadSceneMode mode)
+
