@@ -4,13 +4,12 @@ import speech_recognition  # распознавание пользователь
 import pyttsx3  # синтез речи (Text-To-Speech)
 import wave  # создание и чтение аудиофайлов формата wav
 import json  # работа с json-файлами и json-строками
+import pyaudio
 import os  # работа с файловой системой
 import datetime
 from num2words import num2words
 from bs4 import BeautifulSoup
 import requests
-
-import random
 
 
 class VoiceAssistant:
@@ -65,7 +64,6 @@ def record_and_recognize_audio(*args: tuple):
 
         try:
             print("Слушаю...")
-            #play_voice_assistant_speech("Слушаю...")
             audio = recognizer.listen(microphone, 5, 5)
 
             with open("microphone-results.wav", "wb") as file:
@@ -75,21 +73,12 @@ def record_and_recognize_audio(*args: tuple):
             print("Can you check if your microphone is on, please?")
             return
 
-        # использование online-распознавания через Google
-        # (высокое качество распознавания)
         try:
-            print("Распознаю вашу речь...")
-            #play_voice_assistant_speech("Распознаю вашу речь...")
-            recognized_data = recognizer.recognize_google(audio, language="ru").lower()
+            print("Trying to use offline recognition...")
+            recognized_data = use_offline_recognition()
 
         except speech_recognition.UnknownValueError:
             pass
-
-        # в случае проблем с доступом в Интернет происходит
-        # попытка использовать offline-распознавание через Vosk
-        except speech_recognition.RequestError:
-            print("Trying to use offline recognition...")
-            recognized_data = use_offline_recognition()
 
         return recognized_data
 
@@ -100,19 +89,21 @@ def use_offline_recognition():
     :return: распознанная фраза
     """
     recognized_data = ""
+
     try:
         # проверка наличия модели на нужном языке в каталоге приложения
-        if not os.path.exists("models/vosk-model-small-ru-0.22"):
+        if not os.path.exists("models/small_model_ru"):
             print("Please download the model from:\n"
                   "https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
             exit(1)
 
         # анализ записанного в микрофон аудио (чтобы избежать повторов фразы)
         wave_audio_file = wave.open("microphone-results.wav", "rb")
-        model = Model("models/vosk-model-small-ru-0.22")
+        model = Model("models/small_model_ru")
         offline_recognizer = KaldiRecognizer(model, wave_audio_file.getframerate())
 
         data = wave_audio_file.readframes(wave_audio_file.getnframes())
+
         if len(data) > 0:
             if offline_recognizer.AcceptWaveform(data):
                 recognized_data = offline_recognizer.Result()
@@ -125,7 +116,6 @@ def use_offline_recognition():
         print("Sorry, speech service is unavailable. Try again later")
 
     return recognized_data
-
 
 
 def execute_command_with_name(command_name: str, *args: list):
@@ -142,6 +132,7 @@ def execute_command_with_name(command_name: str, *args: list):
         else:
             pass
 
+
 def search_for_video_on_youtube(*args: tuple):
     """
     Поиск видео на YouTube с автоматическим открытием ссылки на список результатов
@@ -156,6 +147,7 @@ def search_for_video_on_youtube(*args: tuple):
     # отдельный класс, который будет брать перевод из JSON-файла
     play_voice_assistant_speech("Вот какие видео я нашла по запросу " + search_term + "на ютубе")
 
+
 def search_in_internet(*args: tuple):
     """
     Поиск в интернете с автоматическим открытием ссылки на список результатов
@@ -169,6 +161,7 @@ def search_in_internet(*args: tuple):
     # для мультиязычных голосовых ассистентов лучше создать
     # отдельный класс, который будет брать перевод из JSON-файла
     play_voice_assistant_speech("Вот что я нашла по запросу " + search_term + "в интернете")
+
 
 def play_greetings(*args: tuple):
     """
@@ -187,6 +180,7 @@ def play_greetings(*args: tuple):
 
     #play_voice_assistant_speech("Привет!")
 
+
 def play_dela(*args: tuple):
     """
     Разговор
@@ -199,6 +193,7 @@ def play_dela(*args: tuple):
     else:
         play_voice_assistant_speech("Рада слышать!")
 
+
 def play_farewell_and_quit(*args: tuple):
     """
     Прощание
@@ -206,10 +201,12 @@ def play_farewell_and_quit(*args: tuple):
     play_voice_assistant_speech("Досвидания")
     exit()
 
+
 def ctime(*args: tuple):
     now = datetime.datetime.now()
     text = "Сейчас " + num2words(now.hour, lang='ru') + " " + num2words(now.minute, lang='ru')
     play_voice_assistant_speech(text)
+
 
 def help(*args: tuple):
     text = "Я умею: ..."
@@ -220,6 +217,7 @@ def help(*args: tuple):
     text += "открывать сайт расписания нужной вам группы ..."
     text += "озвучивать текущую погоду ..."
     play_voice_assistant_speech(text)
+
 
 def openExe(*args: tuple):
     y = 0
@@ -258,6 +256,7 @@ def play_rasp(*args: tuple):
         try:
             play_voice_assistant_speech("Расписание какой группы вы хотите открыть?")
             voice_input = record_and_recognize_audio()
+
             if "8201" in voice_input:
                 gr = '37030'
                 x = 1
@@ -312,6 +311,7 @@ commands = {
     ("какая погода сейчас", "погода", "температура", "какая сейчас погода"): search_weather,
 }
 
+
 if __name__ == "__main__":
 
     # инициализация инструментов распознавания и ввода речи
@@ -344,8 +344,9 @@ if __name__ == "__main__":
 
             voice_input = voice_input.split(" ")
 
-            k=0
-            while k<3:
+            k = 0
+
+            while k < 3:
                 print(voice_input)
 
                 if k == 0:
