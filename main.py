@@ -1,17 +1,15 @@
-import webbrowser
+import webbrowser #работа с браузером
 from vosk import Model, KaldiRecognizer  # оффлайн-распознавание от Vosk
-import speech_recognition  # распознавание пользовательской речи (Speech-To-Text)
 import pyttsx3  # синтез речи (Text-To-Speech)
-import time
 import json  # работа с json-файлами и json-строками
-import pyaudio
+import pyaudio #запись голоса
 import os  # работа с файловой системой
-import datetime
-from num2words import num2words
+import datetime #работа с датами
+from num2words import num2words #улучшенное распознавание чисел
 from bs4 import BeautifulSoup
-import requests
-import pvporcupine
-from pvrecorder import PvRecorder
+import requests #работа с YandexGPT
+import pvporcupine #стартовое слово
+from pvrecorder import PvRecorder #запись голоса для стартового слова
 
 
 # инициализация модели Vosk
@@ -87,7 +85,7 @@ def record_and_recognize_audio(*args: tuple):
         except:
             print("Извините, произошла какая-то ошибка")
 
-    except speech_recognition.UnknownValueError:
+    except:
         pass
 
 
@@ -152,7 +150,7 @@ def play_greetings(*args: tuple):
         play_voice_assistant_speech("Добрый вечер!")
 
     else:
-        play_voice_assistant_speech("Че не спишь, сука?")
+        play_voice_assistant_speech("Доброй ночи!")
 
 
 def play_farewell_and_quit(*args: tuple):
@@ -236,6 +234,7 @@ def play_rasp(*args: tuple):
     play_voice_assistant_speech("Расписание на какую неделю вы хотите открыть?")
     voice_input = record_and_recognize_audio()
     print(voice_input)
+
     if "текущую" in voice_input:
         week_number = datetime.datetime.today().isocalendar()[1] + 18
         print(week_number)
@@ -272,9 +271,9 @@ def Isactivation():
             keyword_index = porcupine.process(recoder.read())
             if keyword_index >= 0:
                 return True
-
     except KeyboardInterrupt:
         recoder.stop()
+
     finally:
         porcupine.delete()
         recoder.delete()
@@ -295,11 +294,6 @@ commands = {
 
 
 if __name__ == "__main__":
-
-    # инициализация инструментов распознавания и ввода речи
-    recognizer = speech_recognition.Recognizer()
-    microphone = speech_recognition.Microphone()
-
     # инициализация инструмента синтеза речи
     ttsEngine = pyttsx3.init()
 
@@ -313,8 +307,6 @@ if __name__ == "__main__":
     setup_assistant_voice()
 
     play_voice_assistant_speech("Здравствуйте, меня зовут Компьютер")
-
-    time.sleep(2)
 
     activation = False
 
