@@ -2,7 +2,7 @@ import webbrowser
 from vosk import Model, KaldiRecognizer  # оффлайн-распознавание от Vosk
 import speech_recognition  # распознавание пользовательской речи (Speech-To-Text)
 import pyttsx3  # синтез речи (Text-To-Speech)
-import wave  # создание и чтение аудиофайлов формата wav
+import time
 import json  # работа с json-файлами и json-строками
 import pyaudio
 import os  # работа с файловой системой
@@ -12,6 +12,10 @@ from bs4 import BeautifulSoup
 import requests
 import pvporcupine
 from pvrecorder import PvRecorder
+
+# инициализация модели Vosk
+model = Model("models/small_model_ru")
+rec = KaldiRecognizer(model, 16000)
 
 class VoiceAssistant:
     """
@@ -57,66 +61,32 @@ def record_and_recognize_audio(*args: tuple):
     """
     Запись и распознавание аудио
     """
-    with microphone:
-        recognized_data = ""
-
-        # регулирование уровня окружающего шума
-        recognizer.adjust_for_ambient_noise(microphone, duration=1)
-
-        try:
-            print("Слушаю...")
-            audio = recognizer.listen(microphone, 5, 5)
-
-            with open("microphone-results.wav", "wb") as file:
-                file.write(audio.get_wav_data())
-
-        except speech_recognition.WaitTimeoutError:
-            print("Can you check if your microphone is on, please?")
-            return
-
-        try:
-            print("Trying to use offline recognition...")
-            recognized_data = use_offline_recognition()
-
-        except speech_recognition.UnknownValueError:
-            pass
-
-        return recognized_data
-
-
-def use_offline_recognition():
-    """
-    Переключение на оффлайн-распознавание речи
-    :return: распознанная фраза
-    """
-    recognized_data = ""
-
+    print("Слушаю...")
     try:
-        # проверка наличия модели на нужном языке в каталоге приложения
-        if not os.path.exists("models/small_model_ru"):
-            print("Please download the model from:\n"
-                  "https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
-            exit(1)
+        p = pyaudio.PyAudio()
+        stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
+        stream.start_stream()
 
-        # анализ записанного в микрофон аудио (чтобы избежать повторов фразы)
-        wave_audio_file = wave.open("microphone-results.wav", "rb")
-        model = Model("models/small_model_ru")
-        offline_recognizer = KaldiRecognizer(model, wave_audio_file.getframerate())
+        try:
+            # проверка наличия модели на нужном языке в каталоге приложения
+            if not os.path.exists("models/small_model_ru"):
+                print("Please download the model from:\n"
+                      "https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
+                exit(1)
+            while True:
+                # анализ записанного в микрофон аудио (чтобы избежать повторов фразы)
+                data = stream.read(4000, exception_on_overflow=False)
 
-        data = wave_audio_file.readframes(wave_audio_file.getnframes())
+                if (rec.AcceptWaveform(data)) and (len(data) > 0):
+                    recognized_data = json.loads(rec.Result())
+                    print(recognized_data['text'])
+                    if recognized_data['text']:
+                        return recognized_data['text']
+        except:
+            print("Извините, произошла какая-то ошибка")
 
-        if len(data) > 0:
-            if offline_recognizer.AcceptWaveform(data):
-                recognized_data = offline_recognizer.Result()
-
-                # получение данных распознанного текста из JSON-строки
-                # (чтобы можно было выдать по ней ответ)
-                recognized_data = json.loads(recognized_data)
-                recognized_data = recognized_data["text"]
-    except:
-        print("Sorry, speech service is unavailable. Try again later")
-
-    return recognized_data
+    except speech_recognition.UnknownValueError:
+        pass
 
 
 def execute_command_with_name(command_name: str, *args: list):
@@ -170,29 +140,17 @@ def play_greetings(*args: tuple):
     """
     hour = int(datetime.datetime.now().hour)
 
-    if hour >= 0 and hour < 12:
+    if hour >= 8 and hour < 12:
         play_voice_assistant_speech("Доброе утро!")
 
     elif hour >= 12 and hour < 18:
         play_voice_assistant_speech("Добрый день!")
 
-    else:
+    elif hour > 18 and hour < 23:
         play_voice_assistant_speech("Добрый вечер!")
 
-    #play_voice_assistant_speech("Привет!")
-
-
-def play_dela(*args: tuple):
-    """
-    Разговор
-    """
-
-    play_voice_assistant_speech("У меня все замечательно! Как у вас дела?")
-    voice_input = record_and_recognize_audio()
-    if "плохо" in voice_input:
-        play_voice_assistant_speech("Что случилось?")
     else:
-        play_voice_assistant_speech("Рада слышать!")
+        play_voice_assistant_speech("Че не спишь, сука?")
 
 
 def play_farewell_and_quit(*args: tuple):
@@ -258,7 +216,7 @@ def play_rasp(*args: tuple):
             play_voice_assistant_speech("Расписание какой группы вы хотите открыть?")
             voice_input = record_and_recognize_audio()
 
-            if "8201" in voice_input:
+            if "восемь ноль два" in voice_input:
                 gr = '37030'
                 x = 1
             elif "8202" in voice_input:
@@ -279,12 +237,12 @@ def play_rasp(*args: tuple):
     if "текущую" in voice_input:
         week_number = datetime.datetime.today().isocalendar()[1] + 18
         print(week_number)
-        url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2022/' + str(week_number) + '/view.html'
+        url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2023/' + str(week_number) + '/view.html'
         webbrowser.get().open(url)
         play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю")
     else:
         week_number = datetime.datetime.today().isocalendar()[1] + 18
-        url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2022/' + str(week_number) + '/view.html'
+        url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2023/' + str(week_number) + '/view.html'
         webbrowser.get().open(url)
         play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю")
 
@@ -297,11 +255,12 @@ def search_weather(*args: tuple):
     print(temp.text)
     play_voice_assistant_speech("Сейчас" + temp.text)
 
+
 def Isactivation():
 
     porcupine = pvporcupine.create(
         access_key="rGmjFzlpPYfcYnKSjE6cUZhQaW38gssHbfAMBUhYcS5NFAHBzT3GXA==",
-        keywords=["grapefruit"])
+        keywords=["grapefruit", "computer"])
     recoder = PvRecorder(device_index=-1, frame_length=porcupine.frame_length)
 
     try:
@@ -318,10 +277,10 @@ def Isactivation():
         porcupine.delete()
         recoder.delete()
 
+
 commands = {
     ('список команд', 'команды', 'что ты умеешь', 'твои навыки', 'навыки'): help,
     ("здравствуй", "привет", "приветствую"): play_greetings,
-    ("как дела"): play_dela,
     ("найди"): search_in_internet,
     ("выход", "стоп", "досвидания", "пока"): play_farewell_and_quit,
     ("включи видео"): search_for_video_on_youtube,
@@ -351,23 +310,29 @@ if __name__ == "__main__":
     # установка голоса по умолчанию
     setup_assistant_voice()
 
+    play_voice_assistant_speech("Здравствуйте, меня зовут Компьютер")
+
+    time.sleep(2)
+
+    activation = False
+
     while True:
 
-        activation = Isactivation()
+        if not activation:
+            activation = Isactivation()
 
         # отделение команд от дополнительной информации (аргументов)
         if activation:
 
-            voice_input = record_and_recognize_audio()
-            os.remove("microphone-results.wav")
+            voice_input = record_and_recognize_audio(model, rec)
 
             print(voice_input)
 
             voice_input = voice_input.split(" ")
 
-            k=0
+            k = 0
 
-            while k<3:
+            while k < 3:
                 print(voice_input)
 
                 if k == 0:
@@ -388,8 +353,11 @@ if __name__ == "__main__":
                 else:
                     k += 1
 
+            activation = False
+
             if k < 5:
                 play_voice_assistant_speech("Я не поняла, что вы сказали. Повторите пожалуйста.")
+                activation = True
 
-            activation = False
+
 
