@@ -110,6 +110,7 @@ def execute_command_with_name(command_name: str):
             else:
                 pass
 
+
 def search_for_video_on_youtube():
     """
     Поиск видео на YouTube с автоматическим открытием ссылки на список результатов
@@ -117,10 +118,14 @@ def search_for_video_on_youtube():
     play_voice_assistant_speech("Что открыть в YouTube?")
     search_term = record_and_recognize_audio()
 
-    url = "https://www.youtube.com/results?search_query=" + search_term
-    webbrowser.get().open(url)
-
-    play_voice_assistant_speech("Вот какие видео я нашла по запросу " + search_term + "на ютубе")
+    if (fuzz.WRatio("никакое", str(search_term)) >= 80) or (fuzz.WRatio("отмена", str(search_term)) >= 80) or (
+            fuzz.WRatio("стоп", str(search_term)) >= 80):
+        play_voice_assistant_speech("Отмена команды")
+        return True
+    else:
+        url = "https://www.youtube.com/results?search_query=" + search_term
+        webbrowser.get().open(url)
+        play_voice_assistant_speech("Вот какие видео я нашла по запросу " + search_term + "на ютубе")
 
 
 def search_in_internet():
@@ -130,10 +135,14 @@ def search_in_internet():
     play_voice_assistant_speech("Что открыть в браузере?")
     search_term = record_and_recognize_audio()
 
-    url = "https://yandex.ru/search/?clid=2358536&text=" + search_term
-    webbrowser.get().open(url)
-
-    play_voice_assistant_speech("Вот что я нашла по запросу " + search_term + "в интернете")
+    if (fuzz.WRatio("никакое", str(search_term)) >= 80) or (fuzz.WRatio("отмена", str(search_term)) >= 80) or (
+            fuzz.WRatio("стоп", str(search_term)) >= 80):
+        play_voice_assistant_speech("Отмена команды")
+        return True
+    else:
+        url = "https://yandex.ru/search/?clid=2358536&text=" + search_term
+        webbrowser.get().open(url)
+        play_voice_assistant_speech("Вот что я нашла по запросу " + search_term + "в интернете")
 
 
 def play_greetings():
@@ -185,20 +194,23 @@ def openExe():
         play_voice_assistant_speech("Какое приложение открыть?")
         voice_input = record_and_recognize_audio()
 
-        if "photoshop" in voice_input:
+        if fuzz.WRatio("фотошоп", str(voice_input)) >= 80:
             play_voice_assistant_speech("Открываю!")
             codePath = "C:\\Program Files\\Adobe\\Adobe Photoshop 2022\\Photoshop.exe"
             os.startfile(codePath)
             return True
-        if "игру" in voice_input:
+        if fuzz.WRatio("игру", str(voice_input)) >= 80:
             play_voice_assistant_speech("Открываю!")
-            codePath = "C:\\Games\\Keep Talking and Nobody Explodes v1.9.24\\ktane.exe"
+            codePath = "C:\\Games\\DOOM-Eternal\\DOOMEternalx64vk.exe"
             os.startfile(codePath)
             return True
-        if "браузер" in voice_input:
+        if fuzz.WRatio("браузер", str(voice_input)) >= 80:
             play_voice_assistant_speech("Открываю!")
             codePath = "C:\\Users\\demge\\AppData\\Local\\Programs\\Opera GX\\launcher.exe"
             os.startfile(codePath)
+            return True
+        if (fuzz.WRatio("никакое", str(voice_input)) >= 80) or (fuzz.WRatio("отмена", str(voice_input)) >= 80) or (fuzz.WRatio("стоп", str(voice_input)) >= 80):
+            play_voice_assistant_speech("Отмена команды")
             return True
 
         play_voice_assistant_speech("Я вас не поняла, повторите ещё раз")
@@ -356,18 +368,21 @@ if __name__ == "__main__":
                     "Content-Type": "application/json",
                     "Authorization": "Api-Key AQVN1PQls17JJj1VhazwvzUnjyBbcUD_XuLOuSiQ"
                 }
-                endOfStringNum =66
-                newText =""
+
+                endOfStringNum = 66
+                newText = ""
                 response = requests.post(url, headers=headers, json=prompt)
                 result = response.text
-                print(response.text[0])
-                print(response.text)
+                #print(response.text[0])
+                #print(response.text)
+
                 while response.text[endOfStringNum] != '"':
-                    endOfStringNum+=1
+                    endOfStringNum += 1
 
                 for i in range(66, endOfStringNum ):
                     newText += response.text[i]
-                print(newText)
+
+                #print(newText)
                 play_voice_assistant_speech(newText)
 
 
