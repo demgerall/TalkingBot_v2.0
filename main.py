@@ -286,7 +286,7 @@ commands = {
     ("открой в браузере"): search_in_internet,
     ("выход", "стоп", "досвидания", "пока"): play_farewell_and_quit,
     ("включи видео"): search_for_video_on_youtube,
-    ('время', 'текущее время', 'сейчас времени', 'который час'): ctime,
+    ('время', 'текущее время', 'сейчас времени', 'который час', 'сколько времени'): ctime,
     ("открой приложение"): openExe,
     ("кто наш руководитель"): theBest,
     ("расписание"): play_rasp,
@@ -356,7 +356,19 @@ if __name__ == "__main__":
                     "Content-Type": "application/json",
                     "Authorization": "Api-Key AQVN1PQls17JJj1VhazwvzUnjyBbcUD_XuLOuSiQ"
                 }
-
+                endOfStringNum =66
+                newText =""
                 response = requests.post(url, headers=headers, json=prompt)
                 result = response.text
-                play_voice_assistant_speech(result.removeprefix('{"result":{"alternatives":[{"message":{"role":"assistant","text":"')[:-150].replace('/', ""))
+                print(response.text[0])
+                print(response.text)
+                while response.text[endOfStringNum] != '"':
+                    endOfStringNum+=1
+
+                for i in range(66, endOfStringNum ):
+                    newText += response.text[i]
+                print(newText)
+                play_voice_assistant_speech(newText)
+
+
+
