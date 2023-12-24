@@ -1,3 +1,4 @@
+import time
 import webbrowser #работа с браузером
 from vosk import Model, KaldiRecognizer  # оффлайн-распознавание от Vosk
 import pyttsx3  # синтез речи (Text-To-Speech)
@@ -11,6 +12,9 @@ import requests #работа с YandexGPT
 import pvporcupine #стартовое слово
 from pvrecorder import PvRecorder #запись голоса для стартового слова
 from fuzzywuzzy import fuzz #поиск расстояния Левенштейна
+import wave
+import librosa
+import soundfile as sf
 
 
 # инициализация модели Vosk
@@ -49,7 +53,7 @@ def setup_assistant_voice():
         ttsEngine.setProperty("voice", voices[0].id)
 
 
-def play_voice_assistant_speech(text_to_speech):
+def speach_recognition(text_to_speech):
     """
     Проигрывание речи ответов голосового ассистента (без сохранения аудио)
     :param text_to_speech: текст, который нужно преобразовать в речь
@@ -114,26 +118,26 @@ def search_for_video_on_youtube():
     """
     Поиск видео на YouTube с автоматическим открытием ссылки на список результатов
     """
-    play_voice_assistant_speech("Что открыть в YouTube?")
+    text_to_speach("Что открыть в YouTube?")
     search_term = record_and_recognize_audio()
 
     url = "https://www.youtube.com/results?search_query=" + search_term
     webbrowser.get().open(url)
 
-    play_voice_assistant_speech("Вот какие видео я нашла по запросу " + search_term + "на ютубе")
+    text_to_speach("Вот какие видео я нашла по запросу " + search_term + "на ютубе")
 
 
 def search_in_internet():
     """
     Поиск в интернете с автоматическим открытием ссылки на список результатов
     """
-    play_voice_assistant_speech("Что открыть в браузере?")
+    text_to_speach("Что открыть в браузере?")
     search_term = record_and_recognize_audio()
 
     url = "https://yandex.ru/search/?clid=2358536&text=" + search_term
     webbrowser.get().open(url)
 
-    play_voice_assistant_speech("Вот что я нашла по запросу " + search_term + "в интернете")
+    text_to_speach("Вот что я нашла по запросу " + search_term + "в интернете")
 
 
 def play_greetings():
@@ -143,30 +147,31 @@ def play_greetings():
     hour = int(datetime.datetime.now().hour)
 
     if hour >= 6 and hour < 12:
-        play_voice_assistant_speech("Доброе утро!")
+        text_to_speach("Доброе утро!")
 
     elif hour >= 12 and hour < 18:
-        play_voice_assistant_speech("Добрый день!")
+        text_to_speach("Добрый день!")
 
     elif hour > 18 and hour < 24:
-        play_voice_assistant_speech("Добрый вечер!")
+        text_to_speach("Добрый вечер!")
 
     else:
-        play_voice_assistant_speech("Доброй ночи!")
+        text_to_speach("Доброй ночи!")
 
 
 def play_farewell_and_quit():
     """
     Прощание
     """
-    play_voice_assistant_speech("Досвидания")
+    text_to_speach("Досвидания")
+    os.remove("audio.wav")
     exit()
 
 
 def ctime():
     now = datetime.datetime.now()
     text = "Сейчас " + num2words(now.hour, lang='ru') + " " + num2words(now.minute, lang='ru')
-    play_voice_assistant_speech(text)
+    text_to_speach(text)
 
 
 def help():
@@ -177,35 +182,35 @@ def help():
     text += "открывать такие приложения, как Photoshop, браузер, игры ..."
     text += "открывать сайт расписания нужной вам группы ..."
     text += "озвучивать текущую погоду ..."
-    play_voice_assistant_speech(text)
+    text_to_speach(text)
 
 
 def openExe():
     while True:
-        play_voice_assistant_speech("Какое приложение открыть?")
+        text_to_speach("Какое приложение открыть?")
         voice_input = record_and_recognize_audio()
 
         if "photoshop" in voice_input:
-            play_voice_assistant_speech("Открываю!")
+            text_to_speach("Открываю!")
             codePath = "C:\\Program Files\\Adobe\\Adobe Photoshop 2022\\Photoshop.exe"
             os.startfile(codePath)
             return True
         if "игру" in voice_input:
-            play_voice_assistant_speech("Открываю!")
+            text_to_speach("Открываю!")
             codePath = "C:\\Games\\Keep Talking and Nobody Explodes v1.9.24\\ktane.exe"
             os.startfile(codePath)
             return True
         if "браузер" in voice_input:
-            play_voice_assistant_speech("Открываю!")
+            text_to_speach("Открываю!")
             codePath = "C:\\Users\\demge\\AppData\\Local\\Programs\\Opera GX\\launcher.exe"
             os.startfile(codePath)
             return True
 
-        play_voice_assistant_speech("Я вас не поняла, повторите ещё раз")
+        text_to_speach("Я вас не поняла, повторите ещё раз")
 
 def theBest():
     prepodavatel = "Погребной Александр Владимирович"
-    play_voice_assistant_speech(prepodavatel)
+    text_to_speach(prepodavatel)
 
 
 def play_rasp():
@@ -215,7 +220,7 @@ def play_rasp():
     x = 0
     while x == 0:
         try:
-            play_voice_assistant_speech("Расписание какой группы вы хотите открыть?")
+            text_to_speach("Расписание какой группы вы хотите открыть?")
             voice_input = record_and_recognize_audio()
 
             if "восемь ноль два" in voice_input:
@@ -233,7 +238,7 @@ def play_rasp():
         except TypeError:
             pass
 
-    play_voice_assistant_speech("Расписание на какую неделю вы хотите открыть?")
+    text_to_speach("Расписание на какую неделю вы хотите открыть?")
     voice_input = record_and_recognize_audio()
     print(voice_input)
 
@@ -242,12 +247,12 @@ def play_rasp():
         print(week_number)
         url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2023/' + str(week_number) + '/view.html'
         webbrowser.get().open(url)
-        play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю")
+        text_to_speach("Открываю расписание на " + voice_input + "неделю")
     else:
         week_number = datetime.datetime.today().isocalendar()[1] + 18
         url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2023/' + str(week_number) + '/view.html'
         webbrowser.get().open(url)
-        play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю")
+        text_to_speach("Открываю расписание на " + voice_input + "неделю")
 
 
 def search_weather():
@@ -255,7 +260,7 @@ def search_weather():
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
     temp = soup.find('span', 'value')
-    play_voice_assistant_speech("Сейчас" + temp.text)
+    text_to_speach("Сейчас" + temp.text)
 
 
 def Isactivation():
@@ -272,12 +277,54 @@ def Isactivation():
             keyword_index = porcupine.process(recoder.read())
             if keyword_index >= 0:
                 return True
+
     except KeyboardInterrupt:
         recoder.stop()
 
     finally:
         porcupine.delete()
         recoder.delete()
+
+def text_to_speach(text):
+    headers = {'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZTU1NWE5ZDEtMzAzMy00ZDE0LWJkYmMtNmE4NDVkNTEzMGNhIiwidHlwZSI6ImFwaV90b2tlbiJ9.tN5TVNRGqQ9CxrE4C-pKPvzINGdGuB-agM_EBCR19hk'}
+    url = "https://api.edenai.run/v2/audio/text_to_speech"
+    payload = {
+        "providers": "openai",
+        "language": "ru",
+        "option": "FEMALE",
+        "openai": "ru_shimmer",
+        "text": f"{text}"
+    }
+    response = requests.post(url, json = payload, headers= headers)
+    result = json.loads(response.text)
+
+    audio_url = result["openai"]["audio_resource_url"]
+    print((audio_url))
+    r = requests.get(audio_url)
+
+    with open("audio.wav", "wb") as file:
+        file.write(r.content)
+    file.close()
+
+    x, _ = librosa.load('./audio.WAV', sr=40000)
+    sf.write('audio.wav', x, 20000)
+    wave.open('audio.wav', 'r')
+    audio_file = wave.open('audio.wav', 'r')
+
+    FORMAT = audio_file.getsampwidth()  # глубина звука
+    CHANNELS = audio_file.getnchannels()  # количество каналов
+    RATE = audio_file.getframerate()  # частота дискретизации
+    N_FRAMES = audio_file.getnframes()  # кол-во отсчетов
+    audio = pyaudio.PyAudio()
+
+    # открываем поток для записи на устройство вывода - динамик - с такими же параметрами
+    out_stream = audio.open(format=FORMAT, channels=CHANNELS,
+                            rate=RATE, output=True)
+
+    out_stream.write(audio_file.readframes(N_FRAMES))  # отправляем на динамик
+
+    audio.terminate()
+
 
 
 commands = {
@@ -298,6 +345,8 @@ if __name__ == "__main__":
     # инициализация инструмента синтеза речи
     ttsEngine = pyttsx3.init()
 
+
+
     # настройка данных голосового помощника
     assistant = VoiceAssistant()
     assistant.name = "Алиса"
@@ -307,7 +356,7 @@ if __name__ == "__main__":
     # установка голоса по умолчанию
     setup_assistant_voice()
 
-    play_voice_assistant_speech("Здравствуйте, меня зовут Компьютер")
+    text_to_speach("Здравствуйте, меня зовут Компьютер")
 
     while True:
 
@@ -316,7 +365,7 @@ if __name__ == "__main__":
 
         if activation:
 
-            play_voice_assistant_speech("Да, сэр")
+            text_to_speach("Да, сэр")
 
             voice_input = record_and_recognize_audio(model, rec)
 
@@ -360,15 +409,13 @@ if __name__ == "__main__":
                 newText =""
                 response = requests.post(url, headers=headers, json=prompt)
                 result = response.text
-                print(response.text[0])
-                print(response.text)
                 while response.text[endOfStringNum] != '"':
                     endOfStringNum+=1
 
                 for i in range(66, endOfStringNum ):
                     newText += response.text[i]
-                print(newText)
-                play_voice_assistant_speech(newText)
+                #play_voice_assistant_speech(newText)
+                text_to_speach(newText)
 
 
 
