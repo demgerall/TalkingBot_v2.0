@@ -19,3 +19,8 @@
 - pip install pvporcupine
 - pip install pvrecorder
 - pip install fuzzywuzzy
+- pip install librosa
+- pip install soundfile
+- 
+> [!TIP]
+> What did we use?
