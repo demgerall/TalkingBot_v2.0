@@ -19,3 +19,9 @@
 - pip install pvporcupine
 - pip install pvrecorder
 - pip install fuzzywuzzy
+- pip install torch
+- pip install silero
+- pip install pyglet
+
+> [!TIP]
+> What did we use?
