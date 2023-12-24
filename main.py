@@ -1,16 +1,18 @@
-import webbrowser #работа с браузером
+import time
+import webbrowser # работа с браузером
 from vosk import Model, KaldiRecognizer  # оффлайн-распознавание от Vosk
-import pyttsx3  # синтез речи (Text-To-Speech)
 import json  # работа с json-файлами и json-строками
-import pyaudio #запись голоса
+import pyaudio # запись голоса
 import os  # работа с файловой системой
-import datetime #работа с датами
-from num2words import num2words #улучшенное распознавание чисел
+import datetime # работа с датами
+from num2words import num2words # улучшенное распознавание чисел
 from bs4 import BeautifulSoup
-import requests #работа с YandexGPT
-import pvporcupine #стартовое слово
-from pvrecorder import PvRecorder #запись голоса для стартового слова
-from fuzzywuzzy import fuzz #поиск расстояния Левенштейна
+import requests # работа с YandexGPT
+import pvporcupine # стартовое слово
+from pvrecorder import PvRecorder # запись голоса для стартового слова
+from fuzzywuzzy import fuzz # поиск расстояния Левенштейна
+import torch # работа с Silero-TTS ИИ
+import pyglet # воспроизведение голоса Silero
 
 
 # инициализация модели Vosk
@@ -18,35 +20,19 @@ model = Model("models/small_model_ru")
 rec = KaldiRecognizer(model, 16000)
 
 
-class VoiceAssistant:
-    """
-    Настройки голосового ассистента, включающие имя, пол, язык речи
-    """
-    name = ""
-    sex = ""
-    speech_language = ""
-    recognition_language = ""
+# инициализация модели Silero
+language = 'ru'
+model_id = 'v3_1_ru'
+sample_rate = 48000
+speaker = 'xenia'
+device = torch.device('cpu')
 
 
-def setup_assistant_voice():
-    """
-    Установка голоса по умолчанию (индекс может меняться в
-    зависимости от настроек операционной системы)
-    """
-    voices = ttsEngine.getProperty("voices")
-
-    if assistant.speech_language == "en":
-        assistant.recognition_language = "en-US"
-        if assistant.sex == "female":
-            # Microsoft Zira Desktop - English (United States)
-            ttsEngine.setProperty("voice", voices[1].id)
-        else:
-            # Microsoft David Desktop - English (United States)
-            ttsEngine.setProperty("voice", voices[2].id)
-    else:
-        assistant.recognition_language = "ru-RU"
-        # Microsoft Irina Desktop - Russian
-        ttsEngine.setProperty("voice", voices[0].id)
+model1, example_text = torch.hub.load(repo_or_dir='snakers4/silero-models',
+                                     model='silero_tts',
+                                     language=language,
+                                     speaker=model_id)
+model1.to(device)
 
 
 def play_voice_assistant_speech(text_to_speech):
@@ -54,8 +40,17 @@ def play_voice_assistant_speech(text_to_speech):
     Проигрывание речи ответов голосового ассистента (без сохранения аудио)
     :param text_to_speech: текст, который нужно преобразовать в речь
     """
-    ttsEngine.say(str(text_to_speech))
-    ttsEngine.runAndWait()
+    file_name = model1.save_wav(text=text_to_speech,
+                               speaker=speaker,
+                               sample_rate=sample_rate)
+
+
+    f = open(file_name, "rb")
+    mus = pyglet.media.load("", f)
+    mus.play()
+    time.sleep(2)
+    f.close()
+    os.remove(file_name)
 
 
 def record_and_recognize_audio(*args: tuple):
@@ -84,7 +79,7 @@ def record_and_recognize_audio(*args: tuple):
                     if recognized_data['text']:
                         return recognized_data['text']
         except:
-            print("Извините, произошла какая-то ошибка")
+            print("Извините, произошла какая-то ошибка.")
     except:
         pass
 
@@ -125,7 +120,7 @@ def search_for_video_on_youtube():
     else:
         url = "https://www.youtube.com/results?search_query=" + search_term
         webbrowser.get().open(url)
-        play_voice_assistant_speech("Вот какие видео я нашла по запросу " + search_term + "на ютубе")
+        play_voice_assistant_speech("Вот какие видео я нашла по запросу " + search_term + "на ютубе.")
 
 
 def search_in_internet():
@@ -137,12 +132,12 @@ def search_in_internet():
 
     if (fuzz.WRatio("никакое", str(search_term)) >= 80) or (fuzz.WRatio("отмена", str(search_term)) >= 80) or (
             fuzz.WRatio("стоп", str(search_term)) >= 80):
-        play_voice_assistant_speech("Отмена команды")
+        play_voice_assistant_speech("Отмена команды!")
         return True
     else:
         url = "https://yandex.ru/search/?clid=2358536&text=" + search_term
         webbrowser.get().open(url)
-        play_voice_assistant_speech("Вот что я нашла по запросу " + search_term + "в интернете")
+        play_voice_assistant_speech("Вот что я нашла по запросу " + search_term + "в интернете.")
 
 
 def play_greetings():
@@ -168,24 +163,25 @@ def play_farewell_and_quit():
     """
     Прощание
     """
-    play_voice_assistant_speech("Досвидания")
+    play_voice_assistant_speech("Досвидания!")
     exit()
 
 
 def ctime():
     now = datetime.datetime.now()
-    text = "Сейчас " + num2words(now.hour, lang='ru') + " " + num2words(now.minute, lang='ru')
+    text = "Сейчас " + num2words(now.hour, lang='ru') + " " + num2words(now.minute, lang='ru' + ".")
     play_voice_assistant_speech(text)
 
 
 def help():
     text = "Я умею: ..."
-    text += "произносить текущее время ..."
-    text += "искать что-то в интернете  ..."
-    text += "искать видео в youtube ..."
-    text += "открывать такие приложения, как Photoshop, браузер, игры ..."
-    text += "открывать сайт расписания нужной вам группы ..."
-    text += "озвучивать текущую погоду ..."
+    text += "произносить текущее время,"
+    text += "искать что-то в интернете,"
+    text += "искать видео в youtube,"
+    text += "открывать такие приложения, как Photoshop, браузер, игры,"
+    text += "открывать сайт расписания нужной вам группы,"
+    text += "озвучивать текущую погоду"
+    text += "и многое другое"
     play_voice_assistant_speech(text)
 
 
@@ -210,13 +206,13 @@ def openExe():
             os.startfile(codePath)
             return True
         if (fuzz.WRatio("никакое", str(voice_input)) >= 80) or (fuzz.WRatio("отмена", str(voice_input)) >= 80) or (fuzz.WRatio("стоп", str(voice_input)) >= 80):
-            play_voice_assistant_speech("Отмена команды")
+            play_voice_assistant_speech("Отмена команды.")
             return True
 
-        play_voice_assistant_speech("Я вас не поняла, повторите ещё раз")
+        play_voice_assistant_speech("Я вас не поняла, повторите ещё раз.")
 
 def theBest():
-    prepodavatel = "Погребной Александр Владимирович"
+    prepodavatel = "Погребной Александр Владимирович."
     play_voice_assistant_speech(prepodavatel)
 
 
@@ -254,12 +250,12 @@ def play_rasp():
         print(week_number)
         url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2023/' + str(week_number) + '/view.html'
         webbrowser.get().open(url)
-        play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю")
+        play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю.")
     else:
         week_number = datetime.datetime.today().isocalendar()[1] + 18
         url = 'https://rasp.tpu.ru/gruppa_' + gr + '/2023/' + str(week_number) + '/view.html'
         webbrowser.get().open(url)
-        play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю")
+        play_voice_assistant_speech("Открываю расписание на " + voice_input + "неделю.")
 
 
 def search_weather():
@@ -267,7 +263,8 @@ def search_weather():
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
     temp = soup.find('span', 'value')
-    play_voice_assistant_speech("Сейчас" + temp.text)
+    print(temp.text)
+    play_voice_assistant_speech("Сейчас " + num2words(temp.text[:-1], lang='ru') + " градусов.")
 
 
 def Isactivation():
@@ -307,19 +304,8 @@ commands = {
 
 
 if __name__ == "__main__":
-    # инициализация инструмента синтеза речи
-    ttsEngine = pyttsx3.init()
 
-    # настройка данных голосового помощника
-    assistant = VoiceAssistant()
-    assistant.name = "Алиса"
-    assistant.sex = "female"
-    assistant.speech_language = "ru"
-
-    # установка голоса по умолчанию
-    setup_assistant_voice()
-
-    play_voice_assistant_speech("Здравствуйте, меня зовут Компьютер")
+    play_voice_assistant_speech("Здравствуйте, меня зовут Компьютер! Обращайтесь ко мне так перед каждой командой.")
 
     while True:
 
@@ -328,7 +314,7 @@ if __name__ == "__main__":
 
         if activation:
 
-            play_voice_assistant_speech("Да, сэр")
+            play_voice_assistant_speech("Да, сэр?")
 
             voice_input = record_and_recognize_audio(model, rec)
 
@@ -382,8 +368,11 @@ if __name__ == "__main__":
                 for i in range(66, endOfStringNum ):
                     newText += response.text[i]
 
-                #print(newText)
-                play_voice_assistant_speech(newText)
+                if len(newText) > 1:
+                    #print(newText)
+                    play_voice_assistant_speech(newText)
+                else:
+                    play_voice_assistant_speech("Повторите запрос, я не поняла, что вы имели ввиду.")
 
 
 
